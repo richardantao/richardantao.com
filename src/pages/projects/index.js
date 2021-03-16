@@ -2,14 +2,13 @@ import React from "react";
 
 import { Helmet } from "react-helmet";
 
-import Alert from "components/Alert";
 import Nav from "components/Nav";
 import Footer from "components/Footer";
 
 import "styles/global.scss";
 import "./styles.scss";
 
-const Home = () =>
+const Projects = () =>
 	<>
 		<Helmet>
 			<meta charSet="utf-8" />
@@ -17,14 +16,17 @@ const Home = () =>
 			<meta name="keywords" content="richard, antao" />
 			<meta name="author" content="Richard Antao" />
 			<meta name="application-name" content="richardantao.com" />
-			<title>Richard Antao</title>
+			<title>Projects</title>
 		</Helmet>
 		<Nav />
 		<main>
-			hello
+			<ul>
+				<li>Learnify</li>
+				<li>React Native Animations</li>
+				<li>Freelance Gigs</li>
+			</ul>
 		</main>
 		<Footer />
-		<Alert />
 	</>;
 
-export default Home;
+export default Projects;

@@ -1,15 +1,13 @@
 import React from "react";
-
 import { Helmet } from "react-helmet";
 
-import Alert from "components/Alert";
 import Nav from "components/Nav";
 import Footer from "components/Footer";
 
 import "styles/global.scss";
 import "./styles.scss";
 
-const Home = () =>
+const Services = () =>
 	<>
 		<Helmet>
 			<meta charSet="utf-8" />
@@ -21,10 +19,19 @@ const Home = () =>
 		</Helmet>
 		<Nav />
 		<main>
-			hello
+			<h1>Services</h1>
+			<h3>Past Projects</h3>
+			<ul>
+				<li>
+					Big Tyme Fitness
+				</li>
+				<li>
+					Stone House Contracts
+					<iframe src="https://stonehousecontractingltd.ca" title="Stone House Contracts"></iframe>
+				</li>
+			</ul>
 		</main>
 		<Footer />
-		<Alert />
 	</>;
 
-export default Home;
+export default Services;
