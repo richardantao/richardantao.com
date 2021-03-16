@@ -1,0 +1,36 @@
+
+
+#alert {
+	-webkit-animation: alert 1s ease forwards;
+	-moz-animation: alert 1s ease forwards;
+	-ms-animation: alert 1s ease forwards;
+	-o-animation: alert 1s ease forwards;
+	animation: alert 1s ease forwards;
+	/* Animation */
+
+	@-webkit-keyframes alert {
+		0% { opacity: 0; }
+		50% { opacity: 1; }
+		100% { top: 0; }
+	}
+	@-moz-keyframes alert {
+		0% { opacity: 0; }
+		50% { opacity: 1; }
+		100% { top: 0; }
+	}
+	@-ms-keyframes alert {
+		0% { opacity: 0; }
+		50% { opacity: 1; }
+		100% { top: 0; }
+	}
+	@-o-keyframes alert {
+		0% { opacity: 0; }
+		50% { opacity: 1; }
+		100% { top: 0; }
+	}
+	@keyframes alert {
+		0% { opacity: 0; }
+		50% { opacity: 1; }
+		100% { top: 0; }
+	}
+}

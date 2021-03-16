@@ -1,0 +1,30 @@
+@import "styles/colors";
+
+#nav {
+	align-items: center;
+	background-color: $accent-color;
+	display: flex;
+	justify-content: space-between;
+
+	&-links {
+		align-items: center;
+		display: flex;
+		justify-content: center;
+		padding: 0 0.5rem;
+
+		a {
+			color: #FFF;
+			padding: 0.5rem 1rem;
+			text-decoration: none;
+
+			&:hover, &:focus, &:active {
+				text-decoration:underline;
+			}
+		}
+	}
+
+	#logo {
+		height: 5rem;
+		width: rem;
+	}
+}
