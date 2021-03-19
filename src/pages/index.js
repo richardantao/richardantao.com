@@ -99,8 +99,8 @@ const Home = () =>
 				</Card>
 				<Card
 					src={reanimated}
-					alt="React Native Gestures and Animations"
-					title="React Native Gestures and Animations"
+					alt="React Native Gestures & Animations"
+					title="React Native Gestures & Animations"
 					codeRef="https://github.com/richardantao/react-native-animations"
 				>
 					<p>
