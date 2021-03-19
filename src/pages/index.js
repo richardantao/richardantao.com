@@ -83,7 +83,7 @@ const Home = () =>
 				// codeRef="https://github.com/richardantao/ledgerty"
 				>
 					<p>
-						Personal finance application that uses interactive T-accounts to allow for intuitive budget
+						Personal finance application that uses interactive T-accounts to enable intuitive budget
 						allocation and tracking.
 					</p>
 				</Card>
