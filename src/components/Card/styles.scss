@@ -1,3 +1,5 @@
+@import "styles/responsive.scss";
+
 .card {
 	border: 1px solid #E1E1E1;
 	border-radius: 1rem;
@@ -43,11 +45,13 @@
 		}
 	}
 
-	@media screen and (min-width: 2100px) {
-
-
-
+	@media screen and (min-width: $xxl-breakpoint) {
 		max-width: 500px;
+
+		a {
+			font-size: 2rem;
+			margin: 0 1rem;
+		}
 
 		&-display img {
 			height: 300px;
