@@ -35,7 +35,7 @@ const Home = () =>
 				<div id="bio-description">
 					<h1>Richard Antao</h1>
 					<p>
-						Hey I'm Richard <span role="img" aria-label="" aria-labelledby="">&#128075;&#127996;</span>
+						Hey I'm Rich <span role="img" aria-label="" aria-labelledby="">&#128075;&#127996;</span>
 					</p>
 					<p>
 						I'm interested in programming, design, and exploring applications for improvement in the education,
