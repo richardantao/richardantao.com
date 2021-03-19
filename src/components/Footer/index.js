@@ -1,5 +1,7 @@
 import React from "react";
 
+import resume from "assets/Richard Antao's Engineering Resume.pdf";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faGoodreads, faLinkedin, faInstagram, faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope, faFileAlt } from "@fortawesome/free-regular-svg-icons";
@@ -14,7 +16,7 @@ const Footer = () =>
 			<a href="mailto:richardmantao@gmail.com" >
 				<FontAwesomeIcon icon={faEnvelope} />
 			</a>
-			<a href="/">
+			<a href={resume} download>
 				<FontAwesomeIcon icon={faFileAlt} />
 			</a>
 			<a href="https://linkedin.com/in/richardantao" target="_blank" rel="noreferrer">
