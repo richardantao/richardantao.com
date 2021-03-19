@@ -6,8 +6,8 @@ import "styles/global.scss";
 import "./styles.scss";
 
 const Nav = () => {
-	const width = useCurrentWidth();
-	const isResponsive = width < 768;
+	// const width = useCurrentWidth();
+	// const isResponsive = width < 768;
 
 	return (
 		<nav id="nav" role="navigation">
