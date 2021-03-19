@@ -22,7 +22,7 @@ const Projects = () =>
 		<main>
 			<ul>
 				<li>Learnify</li>
-				<li>React Native Animations</li>
+				<li>React Native Gestures & Animations</li>
 				<li>Freelance Gigs</li>
 			</ul>
 		</main>

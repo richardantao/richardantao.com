@@ -1,0 +1,141 @@
+@import "styles/colors.scss";
+
+#home {
+	h1 {
+		text-align: center;
+	}
+
+	h2 {
+		text-align: center;
+	}
+
+	a {
+		color: $accent-color;
+
+		&:hover, &:focus, &:active, &:visited {
+			color: $accent-color;
+		}
+	}
+
+	#bio {
+		display: flex;
+		flex-direction: column;
+
+		&-description p {
+			margin-bottom: 0.5rem;
+		}
+
+		img {
+			border-radius: 50%;
+			height: 10rem;
+			width: 10rem;
+			transform: scale(1.1);
+		}
+	}
+
+	#headshot-wrapper {
+		border-radius: 50%;
+	}
+
+	#services-description,
+	.bio-child,
+	.card-container {
+		align-items: center;
+		display: flex;
+	}
+
+	#services-description,
+	.bio-child {
+		justify-content: center;
+	}
+
+	#services-description {
+		flex-direction: column;
+
+		p {
+			font-size: 1.25rem;
+		}
+	}
+
+	.bio-child {
+		flex: 1;
+		padding: 1rem;
+
+		.gatsby-image-wrapper {
+			border-radius: 50%; // Gatsby override
+		}
+	}
+
+	.card-container {
+		flex-flow: row wrap;
+		justify-content: space-around;
+		padding: 2rem;
+
+		> * {
+			flex: 1 1 300px;
+		}
+	}
+
+	@media screen and (min-width: 576px) {
+		#bio img {
+			height: 15rem;
+			width: 15rem;
+		}
+	}
+
+	@media screen and (min-width: 768px) {
+		h1 {
+			text-align: left;
+		}
+
+		#bio {
+			align-items: center;
+			flex-direction: row;
+			justify-content: space-evenly;
+		}
+
+		.bio-child {
+			padding: 2rem;
+		}
+	}
+
+	@media screen and (min-width: 992px) {
+		#bio img {
+			height: 18rem;
+			width: 18rem;
+		}
+	}
+
+	@media screen and (min-width: 1200px) {
+		#bio img {
+			height: 20rem;
+			width: 20rem;
+		}
+	}
+
+	@media screen and (min-width: 1440px) {
+
+	}
+
+	@media screen and (min-width: 2100px) {
+		#bio {
+			min-height: 50rem;
+
+			img {
+				height: 25rem;
+				width: 25rem;
+			}
+		}
+
+		#bio-description {
+			h1 {
+				font-size: 3rem;
+			}
+
+			p {
+				font-size: 2rem;
+				margin-bottom: 1rem;
+			}
+		}
+	}
+}

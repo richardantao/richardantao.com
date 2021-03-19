@@ -20,16 +20,27 @@ const Services = () =>
 		<Nav />
 		<main>
 			<h1>Services</h1>
-			<h3>Past Projects</h3>
-			<ul>
-				<li>
-					Big Tyme Fitness
-				</li>
-				<li>
-					Stone House Contracts
+			<section>
+				<p>
+					Aside from mobile apps and web applications, I also design and develop websites for clients.
+				</p>
+				<p>
+					If you are interested in working with me to design and/or develop your website,
+					send me an email by clicking on the envelope icon in the footer below.
+				</p>
+			</section>
+			<section>
+				<h3>Past Projects</h3>
+				<ul>
+					<li>
+						Big Tyme Fitness
+					</li>
+					<li>
+						Stone House Contracts
 					<iframe src="https://stonehousecontractingltd.ca" title="Stone House Contracts"></iframe>
-				</li>
-			</ul>
+					</li>
+				</ul>
+			</section>
 		</main>
 		<Footer />
 	</>;
