@@ -21,11 +21,11 @@ const Footer = () =>
 			<a href={resume} download>
 				<FontAwesomeIcon icon={faFileAlt} />
 			</a>
-			<a href="https://linkedin.com/in/richardantao" target="_blank" rel="noreferrer">
-				<FontAwesomeIcon icon={faLinkedin} />
-			</a>
 			<a href="https://github.com/richardantao" target="_blank" rel="noreferrer">
 				<FontAwesomeIcon icon={faGithub} />
+			</a>
+			<a href="https://linkedin.com/in/richardantao" target="_blank" rel="noreferrer">
+				<FontAwesomeIcon icon={faLinkedin} />
 			</a>
 			<a href="https://www.instagram.com/richardantao/" target="_blank" rel="noreferrer">
 				<FontAwesomeIcon icon={faInstagram} />
