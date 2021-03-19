@@ -14,14 +14,12 @@ const Page = ({
 }) =>
 	<>
 		<Helmet>
-			<Helmet>
-				<meta charSet="utf-8" />
-				<meta name="description" content={description} />
-				<meta name="keywords" content={keywords} />
-				<meta name="author" content="Richard Antao" />
-				<meta name="application-name" content="richardantao.com" />
-				<title>{title}</title>
-			</Helmet>
+			<meta charSet="utf-8" />
+			<meta name="description" content={description} />
+			<meta name="keywords" content={keywords} />
+			<meta name="author" content="Richard Antao" />
+			<meta name="application-name" content="richardantao.com" />
+			<title>{title}</title>
 		</Helmet>
 		<Nav />
 		<main id={id} role="main">
