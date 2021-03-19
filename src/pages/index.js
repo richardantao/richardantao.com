@@ -59,6 +59,16 @@ const Home = () =>
 					title="Learnify"
 					srcRef="https://learnify.ca"
 					codeRef="https://github.com/learnify-ca"
+					appStoreRef={`
+						mailto:richardantao@learnify.ca?
+						subject=Interested%20in%20Learnify's%20iOS%20Beta%20Program!&
+						body=Hello,%0d%0dI%20would%20like%20to%20join%20Learnify's%20Beta%20Program%20for%20iOS!%20Please%20send%20the%20invitation%20to%20this%20email.%20Thanks!%0d%0dRegards,%0d%0d
+					`}
+					googlePlayRef={`
+					mailto:richardantao@learnify.ca?
+						subject=Interested%20in%20Learnify's%20Android%20Beta%20Program!&
+						body=Hello,%0d%0dI%20would%20like%20to%20join%20Learnify's%20Beta%20Program%20for%20Android!%20Please%20send%20the%20invitation%20to%20this%20email.%20Thanks!%0d%0dRegards,%0d%0d
+					`}
 				>
 					<p>
 						Integrated learning platform helping students manage their schedule, productivity,
