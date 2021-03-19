@@ -1,27 +1,61 @@
-@import "styles/colors";
+@import "styles/responsive.scss";
+@import "styles/colors.scss";
 
 #footer {
 	align-items: center;
 	background-color: $accent-color;
-	height: 4rem;
+	height: 8rem;
 	display: flex;
 	justify-content: space-between;
-	padding: 0 10rem;
+	padding: 0 2rem;
 
 	p, a {
 		color: #FFF;
 	}
 
 	a {
-		font-size: 1.5rem;
 		margin: 0 1rem;
 	}
 
-	@media screen and (min-width: 2100px) {
+	&-signature,
+	&-links {
+		flex: 1;
+	}
+
+	&-links {
+		align-items: center;
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: space-around;
+	}
+
+	@media screen and (min-width: $xs-breakpoint) {
+		height: 6rem;
+	}
+
+	@media screen and (min-width: $sm-breakpoint) {
+		height: 4rem;
+	}
+
+	@media screen and (min-width: $md-breakpoint) {
+		padding: 0 10rem;
+
+		p, a {
+			font-size: 1rem;
+		}
+	}
+
+	@media screen and (min-width: $xl-breakpoint) {
+		a {
+			font-size: 1.5rem;
+		}
+	}
+
+	@media screen and (min-width: $xxl-breakpoint) {
 		height: 6rem;
 		padding: 0 12rem;
 
-		p,a {
+		p, a {
 			font-size: 2rem;
 			margin: 0 1.33rem;
 		}

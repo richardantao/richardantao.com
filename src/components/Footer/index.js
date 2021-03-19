@@ -11,8 +11,10 @@ import "./styles.scss";
 
 const Footer = () =>
 	<footer id="footer" role="contentinfo">
-		<p>Designed and developed by Richard Antao</p>
-		<div>
+		<div id="footer-signature">
+			<p>Designed and developed by Richard Antao</p>
+		</div>
+		<div id="footer-links">
 			<a href="mailto:richardmantao@gmail.com" >
 				<FontAwesomeIcon icon={faEnvelope} />
 			</a>
