@@ -14,12 +14,16 @@
 		margin: 0;
 	}
 
-	&-display img {
-		border-top-left-radius: 1rem;
-		border-top-right-radius: 1rem;
-		height: 200px;
-		object-fit: cover;
-		width: 100%;
+	&-display {
+		img {
+			border-top-left-radius: 1rem;
+			border-top-right-radius: 1rem;
+			height: 200px;
+			object-fit: cover;
+			width: 100%;
+
+
+		}
 	}
 
 	&-body {
@@ -42,6 +46,16 @@
 
 		a {
 			margin: 0 0.5rem;
+		}
+	}
+
+	.expandable {
+		transition: transform 0.5s;
+
+		&:hover {
+			border-bottom-left-radius: 1rem;
+			border-bottom-right-radius: 1rem;
+			transform: scale(1.1);
 		}
 	}
 

@@ -15,17 +15,17 @@ const Card = ({
 	children,
 	src,
 	alt,
-	imgStyle,
 	title,
 	srcRef,
 	infoRef,
 	codeRef,
 	appStoreRef,
-	googlePlayRef
+	googlePlayRef,
+	expandable = false
 }) =>
 	<div className="card">
 		<div className="card-display">
-			<img src={src} alt={alt} style={imgStyle} />
+			<img src={src} alt={alt} className={expandable ? "expandable" : ""} />
 		</div>
 		<div className="card-body">
 			<h3>
@@ -64,6 +64,7 @@ Card.propTypes = {
 	srcRef: PropTypes.string,
 	infoRef: PropTypes.string,
 	codeRef: PropTypes.string,
+	expandable: PropTypes.bool
 };
 
 export default Card;
