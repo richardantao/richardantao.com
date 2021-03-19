@@ -1,7 +1,8 @@
 @import "styles/colors.scss";
 
 #home {
-	h1, h2 {
+	h1,
+	h2 {
 		text-align: center;
 	}
 
@@ -129,6 +130,10 @@
 			font-size: 2rem;
 		}
 
+		p {
+			font-size: 2rem;
+		}
+
 		#bio {
 			min-height: 50rem;
 
@@ -139,12 +144,7 @@
 		}
 
 		#bio-description p {
-			font-size: 2rem;
 			margin-bottom: 1rem;
-		}
-
-		#services-description p, .card p {
-			font-size: 2rem;
 		}
 	}
 }
