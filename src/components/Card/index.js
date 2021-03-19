@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExternalLinkAlt, faCode, faInfo } from "@fortawesome/free-solid-svg-icons";
+import { faAppStoreIos, faGooglePlay } from "@fortawesome/free-brands-svg-icons";
 
 import "./styles.scss";
 
@@ -18,7 +19,9 @@ const Card = ({
 	title,
 	srcRef,
 	infoRef,
-	codeRef
+	codeRef,
+	appStoreRef,
+	googlePlayRef
 }) =>
 	<div className="card">
 		<div className="card-display">
@@ -34,6 +37,8 @@ const Card = ({
 		</div>
 		<div className="card-footer">
 			{renderIcon(faExternalLinkAlt, srcRef)}
+			{renderIcon(faAppStoreIos, appStoreRef)}
+			{renderIcon(faGooglePlay, googlePlayRef)}
 			{renderIcon(faInfo, infoRef)}
 			{renderIcon(faCode, codeRef)}
 		</div>
