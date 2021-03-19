@@ -1,11 +1,7 @@
 @import "styles/colors.scss";
 
 #home {
-	h1 {
-		text-align: center;
-	}
-
-	h2 {
+	h1, h2 {
 		text-align: center;
 	}
 
@@ -114,28 +110,45 @@
 	}
 
 	@media screen and (min-width: 1440px) {
+		#bio img {
+			height: 22rem;
+			width: 22rem;
+		}
 
+		p {
+				font-size: 1.25rem;
+		}
 	}
 
 	@media screen and (min-width: 2100px) {
+		h1 {
+			font-size: 3rem;
+		}
+
+		h2 {
+			font-size: 2.5rem;
+		}
+
+		h3 {
+			font-size: 2rem;
+		}
+
 		#bio {
 			min-height: 50rem;
 
 			img {
-				height: 25rem;
-				width: 25rem;
+				height: 30rem;
+				width: 30rem;
 			}
 		}
 
-		#bio-description {
-			h1 {
-				font-size: 3rem;
-			}
+		#bio-description p {
+			font-size: 2rem;
+			margin-bottom: 1rem;
+		}
 
-			p {
-				font-size: 2rem;
-				margin-bottom: 1rem;
-			}
+		#services-description p, .card p {
+			font-size: 2rem;
 		}
 	}
 }
