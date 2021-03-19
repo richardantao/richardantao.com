@@ -1,0 +1,64 @@
+import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faExternalLinkAlt, faCode, faInfo } from "@fortawesome/free-solid-svg-icons";
+
+import "./styles.scss";
+
+const linkStyle = {
+	color: "#0D3AA9"
+};
+
+const Card = ({
+	children,
+	src,
+	alt,
+	imgStyle,
+	title,
+	srcRef,
+	infoRef,
+	codeRef
+}) =>
+	<div className="card">
+		<div className="card-display">
+			<img src={src} alt={alt} style={imgStyle} />
+		</div>
+		<div className="card-body">
+			<h3>
+				{title}
+			</h3>
+			<div className="card-body-description">
+				{children}
+			</div>
+		</div>
+		<div className="card-footer">
+			{renderIcon(faExternalLinkAlt, srcRef)}
+			{renderIcon(faInfo, infoRef)}
+			{renderIcon(faCode, codeRef)}
+		</div>
+	</div>;
+
+/**
+ * @param {IconDefinition} icon icon definition
+ * @param {string | undefined} href anchor tag href
+ * @returns {JSX.Element}
+ */
+const renderIcon = (icon, href) => {
+	if (href) return (
+		<a href={href} target="_blank" rel="noreferrer">
+			<FontAwesomeIcon icon={icon} style={linkStyle} />
+		</a>
+	);
+};
+
+Card.propTypes = {
+	src: PropTypes.array.isRequired,
+	alt: PropTypes.string.isRequired,
+	title: PropTypes.string.isRequired,
+	srcRef: PropTypes.string,
+	infoRef: PropTypes.string,
+	codeRef: PropTypes.string,
+};
+
+export default Card;
