@@ -1,0 +1,29 @@
+{
+	"name": "richardantao",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev -p 1001",
+		"build": "next build && next export",
+		"start": "next start",
+		"lint": "next lint"
+	},
+	"dependencies": {
+		"@next/font": "13.1.1",
+		"next": "13.1.1",
+		"react": "18.2.0",
+		"react-dom": "18.2.0",
+		"styled-components": "^5.3.6"
+	},
+	"devDependencies": {
+		"@types/jest": "^29.2.4",
+		"@types/node": "18.11.17",
+		"@types/react": "18.0.26",
+		"@types/react-dom": "18.0.10",
+		"@types/styled-components": "^5.1.26",
+		"eslint": "8.30.0",
+		"eslint-config-next": "13.1.1",
+		"jest": "^29.3.1",
+		"typescript": "4.9.4"
+	}
+}
