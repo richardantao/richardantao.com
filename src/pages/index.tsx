@@ -137,11 +137,11 @@ const Home: NextPage = () => (
 					<BookShelfItem title="Man's Search for Meaning" author="Viktor Frankl" />
 					<BookShelfItem title="Nineteen Eighty-Four" author="George Orwell" />
 					<BookShelfItem title="Never Split the Difference" author="Chris Voss" />
-					<BookShelfItem title="Thinking Fast and Slow" author="Daniel Kahneman" />
 					<BookShelfItem title="The Brain that Changes Itself" author="Norman Doidge" />
 					<BookShelfItem title="The Lean Startup" author="Eric Ries" />
 					<BookShelfItem title="The Power of Now" author="Eckhart Tolle" />
 					<BookShelfItem title="The 4-Hour Workweek" author="Tim Ferriss" />
+					<BookShelfItem title="Thinking Fast and Slow" author="Daniel Kahneman" />
 					<BookShelfItem title="Zero to One" author="Peter Thiel" />
 				</ul>
 			</Section>
