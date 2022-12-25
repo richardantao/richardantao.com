@@ -7,9 +7,27 @@ import NextLink from "next/link";
 import { Breakpoint, Color } from "~/styles";
 
 const Main = styled.main.attrs(() => ({ role: "main" }))`
+	padding: 1rem 4rem;
+	padding-bottom: 0;
+
+	@media screen and (${Breakpoint.MOBILE_LANDSCAPE}){
+		padding: 2rem 10rem;
+	}
+
+	@media screen and (${Breakpoint.TABLET_PORTRAIT}){
+		padding: 2rem 15rem;
+	}
+
+	@media screen and (${Breakpoint.LAPTOP_SMALL}){
+		padding: 2rem 25rem;
+	}
+
 	@media screen and (${Breakpoint.LAPTOP_LARGE}){
 		padding: 2rem 30rem;
-		padding-bottom: 0;
+	}
+
+	@media screen and (${Breakpoint.DESKTOP}){
+		padding: 4rem 35rem;
 	}
 `;
 
@@ -17,6 +35,13 @@ const Section = styled.section`
 	p,
 	ul {
 		margin: 1rem 0;
+	}
+
+	@media screen and (${Breakpoint.DESKTOP}) {
+		p,
+		ul {
+			font-size: 1.75rem;
+		}
 	}
 `;
 
@@ -34,10 +59,18 @@ const Link = styled(NextLink).attrs(() => ({ role: "link" }))`
 
 const H1 = styled.h1`
 	margin: 1rem 0;
+
+	@media screen and (${Breakpoint.DESKTOP}){
+		font-size: 4rem;
+	}
 `;
 
 const H2 = styled.h2`
 	margin: 0.5rem 0;
+
+	@media screen and (${Breakpoint.DESKTOP}){
+		font-size: 3rem;
+	}
 `;
 
 const H3 = styled.h3`
@@ -48,6 +81,10 @@ const H3 = styled.h3`
 	&:focus,
 	&:active {
 		color: ${Color.PRIMARY};
+	}
+
+	@media screen and (${Breakpoint.DESKTOP}){
+		font-size: 2rem;
 	}
 `;
 
