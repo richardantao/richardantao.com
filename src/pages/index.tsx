@@ -113,7 +113,7 @@ const Home: NextPage = () => (
 				<div>
 					<p>
 						A self-taught software developer (more of a <em>&ldquo;hacker&rdquo;</em> than an engineer), interested in exploring
-						better methods and tools for learning and productivity, particularly in the domain of formal education.
+						better methods and tools for learning and productivity, particularly within the domain of formal education.
 					</p>
 					<p>
 						I am currently based in the Greater Toronto Area, and I am the founder of <Link href="https://learnify.ca" target="_blank">Learnify</Link>.
