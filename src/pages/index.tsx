@@ -145,7 +145,7 @@ const Home: NextPage = () => (
 					</Link>
 				</div>*/}
 					<div>
-						<Link href="https://blog.learnify.ca/lets-put-mastery-before-marks" target="_blank">
+						<Link href="https://blog.learnify.ca/its-time-to-place-mastery-before-marks" target="_blank">
 							<H3>It&apos;s Time to Place Mastery before Marks</H3>
 						</Link>
 						<p>
