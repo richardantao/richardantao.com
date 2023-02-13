@@ -143,15 +143,16 @@ const Home: NextPage = () => (
 					<Link href="https://blog.learnify.ca/launching-learnify" target="_blank">
 						<H3>Launching Learnify</H3>
 					</Link>
-				</div>
-				<div>
-					<Link href="https://blog.learnify.ca/lets-put-mastery-before-marks" target="_blank">
-						<H3>Let&apos;s Put Mastery before Marks</H3>
-					</Link>
-					<p>
-
-					</p>
-				</div> */}
+				</div>*/}
+					<div>
+						<Link href="https://blog.learnify.ca/lets-put-mastery-before-marks" target="_blank">
+							<H3>It&apos;s Time to Place Mastery before Marks</H3>
+						</Link>
+						<p>
+							Try and think back to when you were in school. Did you ever get to a point where you were so busy
+							with assignments, classes, and extra-curricular activities that you didn&apos;t have the time...
+						</p>
+					</div>
 					<div>
 						<Link href="https://blog.learnify.ca/the-current-state-of-the-education-system" target="_blank">
 							<H3>The Current State of the Education System</H3>

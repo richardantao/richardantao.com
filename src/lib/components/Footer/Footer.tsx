@@ -17,7 +17,7 @@ const StyledFooter = styled.footer.attrs(() => ({ role: "contentinfo" }))`
 export const Footer: FC = () => (
 	<StyledFooter>
 		<p>
-			<i>Last Update: December 24, 2022</i>
+			<i>Last Update: February 12, 2023</i>
 		</p>
 	</StyledFooter>
 );
