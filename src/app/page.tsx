@@ -92,8 +92,6 @@ const HomePage = () => (
 		<section id="bookshelf">
 			<h2>Bookshelf</h2>
 			<ul>
-				<BookShelfItem title="Power and Prediction: The Disruptive Economics of Artificial Intelligence" author="Ajay Agrawal" />
-				<BookShelfItem title="Prediction Machines: The Simple Economics of Artificial Intelligence" author="Ajay Agrawal" />
 				<BookShelfItem title="Atomic Habits" author="James Clear" />
 				<BookShelfItem title="Brave New World" author="Aldous Huxley" />
 				<BookShelfItem title="Crossing the Chasm" author="Geoffrey Moore" />
@@ -102,6 +100,8 @@ const HomePage = () => (
 				<BookShelfItem title="Man's Search for Meaning" author="Viktor Frankl" />
 				<BookShelfItem title="Nineteen Eighty-Four" author="George Orwell" />
 				<BookShelfItem title="Never Split the Difference" author="Chris Voss" />
+				<BookShelfItem title="Power and Prediction: The Disruptive Economics of Artificial Intelligence" author="Ajay Agrawal" />
+				<BookShelfItem title="Prediction Machines: The Simple Economics of Artificial Intelligence" author="Ajay Agrawal" />
 				<BookShelfItem title="The Brain that Changes Itself" author="Norman Doidge" />
 				<BookShelfItem title="The Lean Startup" author="Eric Ries" />
 				<BookShelfItem title="The Power of Now" author="Eckhart Tolle" />
