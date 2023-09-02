@@ -14,10 +14,10 @@ export const Footer: FC = () => (
 		</div>
 		<div className="social-container">
 			<Link href="https://instagram.com/richardantao" target="_blank">
-				<Icon icon={faInstagram} />
+				<Icon icon={faInstagram} aria-label="Instagram logo" />
 			</Link>
 			<Link href="https://linkedin.com/in/richardantao" target="_blank">
-				<Icon icon={faLinkedin} />
+				<Icon icon={faLinkedin} aria-label="LinkedIn logo" />
 			</Link>
 		</div>
 	</footer>
