@@ -4,7 +4,7 @@
 	"private": true,
 	"engines": {
 		"node": "18.x",
-		"npm": "7.x"
+		"npm": "9.x"
 	},
 	"scripts": {
 		"analyze": "cross-env ANALYZE=true next build",
@@ -15,6 +15,7 @@
 		"lint": "next lint"
 	},
 	"dependencies": {
+		"@fortawesome/fontawesome-svg-core": "^6.4.2",
 		"@fortawesome/free-brands-svg-icons": "^6.4.2",
 		"@fortawesome/react-fontawesome": "^0.2.0",
 		"next": "13.4.19",
