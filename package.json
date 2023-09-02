@@ -2,6 +2,10 @@
 	"name": "richardantao",
 	"version": "1.0.0",
 	"private": true,
+	"engines": {
+		"node": "18.x",
+		"npm": "7.x"
+	},
 	"scripts": {
 		"analyze": "cross-env ANALYZE=true next build",
 		"dev": "next dev -p 1001",
