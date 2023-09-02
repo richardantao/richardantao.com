@@ -1,0 +1,42 @@
+#footer {
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+	min-height: 100px;
+	padding: 0 2rem;
+}
+
+.meta-container p {
+	color: #666;
+}
+
+.social-container {
+	align-items: center;
+	display: flex;
+	justify-content: space-around;
+}
+
+.social-container svg {
+	color: #092741;
+	height: 1.5rem;
+	margin: 1rem;
+	width: 1.5rem;
+}
+
+.social-container svg:hover,
+.social-container svg:focus,
+.social-container svg:active {
+	color: #00a6ff;
+}
+
+@media screen and (min-width: 2100px) {
+	#footer {
+		font-size: 1.75rem;
+	}
+
+	.social-container svg {
+		height: 2rem;
+		margin: 1.25rem;
+		width: 2rem;
+	}
+}

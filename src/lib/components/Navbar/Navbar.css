@@ -1,0 +1,23 @@
+header {
+	align-items: center;
+	display: flex;
+	min-height: 100px;
+	justify-content: flex-end;
+}
+
+nav {
+	align-items: center;
+	display: flex;
+}
+
+a {
+	color: #00a6ff;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+a:hover,
+a:focus,
+a:active {
+	color: #0091ff;
+}

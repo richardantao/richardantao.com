@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: http://localhost:1001
+
+# Sitemaps
+Sitemap: http://localhost:1001/sitemap.xml
