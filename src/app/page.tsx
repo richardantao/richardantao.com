@@ -39,7 +39,7 @@ const HomePage = () => (
 					I am currently based in the Greater Toronto Area, and I am the founder of <Link href="https://www.vitalearning.ca" target="_blank">Vita Learning</Link>.
 				</p>
 				<p>
-					In my free time I enjoy reading, strength-training, and endurance running.
+					In my free time I enjoy reading, strength training, and endurance running.
 				</p>
 			</div>
 		</section>
