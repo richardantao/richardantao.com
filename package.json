@@ -15,8 +15,10 @@
 		"lint": "next lint"
 	},
 	"dependencies": {
+		"@fortawesome/fontawesome-pro-solid": "^5.1.0-3",
 		"@fortawesome/fontawesome-svg-core": "^6.4.2",
 		"@fortawesome/free-brands-svg-icons": "^6.4.2",
+		"@fortawesome/pro-solid-svg-icons": "^6.4.2",
 		"@fortawesome/react-fontawesome": "^0.2.0",
 		"next": "13.4.19",
 		"next-sitemap": "^4.2.2",
