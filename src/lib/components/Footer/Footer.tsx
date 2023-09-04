@@ -10,7 +10,7 @@ export const Footer: FC = () => (
 	<footer id="footer" role="contentinfo">
 		<div className="meta-container">
 			<small>
-				<i>Last Update: September 2, 2023</i>
+				<i>Last Update: September 4, 2023</i>
 			</small>
 		</div>
 		<div className="social-container">
