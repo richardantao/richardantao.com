@@ -9,9 +9,9 @@ import "./Footer.css";
 export const Footer: FC = () => (
 	<footer id="footer" role="contentinfo">
 		<div className="meta-container">
-			<p>
+			<small>
 				<i>Last Update: September 2, 2023</i>
-			</p>
+			</small>
 		</div>
 		<div className="social-container">
 			<Link href="mailto:richardmantao@gmail.com" target="_blank" aria-label="E-mail logo">
