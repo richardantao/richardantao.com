@@ -59,6 +59,17 @@ const HomePage = () => (
 			<h2>Blog</h2>
 			<div>
 				<div>
+					<Link href="https://blog.vitalearning.ca/unleashing-the-power-of-nlp-in-education" target="_blank">
+						<h3>Unleashing the Power of Natural Language Processing in Education</h3>
+					</Link>
+					<p>
+						They breakthroughs in AI and NLP have opened up a world of possibilities in the field of education. 🚀
+					</p>
+					<p>
+						By harnessing the potential of NLP, students and educators can benefit in various ways, ranging from personalized learning to improved assessment techniques.
+					</p>
+				</div>
+				<div>
 					<Link href="https://blog.vitalearning.ca/launching-vita" target="_blank">
 						<h3>Launching Vita</h3>
 					</Link>
