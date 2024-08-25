@@ -16,6 +16,10 @@ const BookShelfItem: FC<{ title: string, author: string }> = ({ title, author })
 	</li>
 );
 
+function getBlogUrl(pathname: string) {
+	return new URL(pathname, "https://blog.vitalearning.ca").href;
+}
+
 const HomePage = () => (
 	<main role="main">
 		<header role="banner">
@@ -33,7 +37,7 @@ const HomePage = () => (
 			<div>
 				<p>
 					A self-taught software developer (more of a <em>&ldquo;hacker&rdquo;</em> than an engineer), interested in exploring
-					better methods and tools for learning and productivity, particularly within the domain of formal education.
+					better methods and tools for learning and productivity, particularly within the domain of institutional education.
 				</p>
 				<p>
 					I am currently based in the Greater Toronto Area, and I am the founder of <Link href="https://www.vitalearning.ca" target="_blank">Vita Learning</Link>.
@@ -59,7 +63,15 @@ const HomePage = () => (
 			<h2>Blog</h2>
 			<div>
 				<div>
-					<Link href="https://blog.vitalearning.ca/unleashing-the-power-of-nlp-in-education" target="_blank">
+					<Link href={getBlogUrl("/whats-new-in-vitas-v2-revamp")} target="_blank">
+						<h3>What&apos;s New in Vita&apos;s V5 Revamp</h3>
+					</Link>
+					<p>
+						Over the last year, we&apos;ve been hard at work revamping the Vita app, with a suite of new features, design changes, and an optimized workflow so you can get the most out of your learning experience.
+					</p>
+				</div>
+				<div>
+					<Link href={getBlogUrl("/unleashing-the-power-of-nlp-in-education")} target="_blank">
 						<h3>Unleashing the Power of Natural Language Processing in Education</h3>
 					</Link>
 					<p>
@@ -70,7 +82,7 @@ const HomePage = () => (
 					</p>
 				</div>
 				<div>
-					<Link href="https://blog.vitalearning.ca/launching-vita" target="_blank">
+					<Link href={getBlogUrl("/launching-vita")} target="_blank">
 						<h3>Launching Vita</h3>
 					</Link>
 					<p>
@@ -81,7 +93,7 @@ const HomePage = () => (
 					</p>
 				</div>
 				<div>
-					<Link href="https://blog.vitalearning.ca/its-time-to-place-mastery-before-marks" target="_blank">
+					<Link href={getBlogUrl("/its-time-to-place-mastery-before-marks")} target="_blank">
 						<h3>It&apos;s Time to Place Mastery before Marks</h3>
 					</Link>
 					<p>
@@ -90,7 +102,7 @@ const HomePage = () => (
 					</p>
 				</div>
 				<div>
-					<Link href="https://blog.vitalearning.ca/the-current-state-of-the-education-system" target="_blank">
+					<Link href={getBlogUrl("/the-current-state-of-the-education-system")} target="_blank">
 						<h3>The Current State of the Education System</h3>
 					</Link>
 					<p>
@@ -106,6 +118,7 @@ const HomePage = () => (
 				<BookShelfItem title="Atomic Habits" author="James Clear" />
 				<BookShelfItem title="Brave New World" author="Aldous Huxley" />
 				<BookShelfItem title="Crossing the Chasm" author="Geoffrey Moore" />
+				<BookShelfItem title="Chip War" author="Chris Miller" />
 				<BookShelfItem title="Deep Work" author="Cal Newport" />
 				<BookShelfItem title="Grit" author="Angela Duckworth" />
 				<BookShelfItem title="Man's Search for Meaning" author="Viktor Frankl" />
