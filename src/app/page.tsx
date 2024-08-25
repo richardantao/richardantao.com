@@ -64,10 +64,10 @@ const HomePage = () => (
 			<div>
 				<div>
 					<Link href={getBlogUrl("/whats-new-in-vitas-v2-revamp")} target="_blank">
-						<h3>What&apos;s New in Vita&apos;s V5 Revamp</h3>
+						<h3>What&apos;s New in Vita&apos;s V2 Revamp</h3>
 					</Link>
 					<p>
-						Over the last year, we&apos;ve been hard at work revamping the Vita app, with a suite of new features, design changes, and an optimized workflow so you can get the most out of your learning experience.
+						With your feedback, we&apos;ve been hard at work over the last year revamping the Vita app, with a suite of new features, design changes, and an optimized workflow so you can get the most out of your learning experience.
 					</p>
 				</div>
 				<div>
