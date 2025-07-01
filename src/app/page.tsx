@@ -1,9 +1,9 @@
-import { FC } from "react";
-import { Metadata } from "next";
+import type { FC } from "react";
+import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 
 import "./page.css";
-import Image from "next/image";
 
 export const metadata: Metadata = {
 	description: "Personal website of Richard Antao.",
@@ -115,26 +115,29 @@ const HomePage = () => (
 		<section id="bookshelf">
 			<h2>Bookshelf</h2>
 			<ul>
-				<BookShelfItem title="Atomic Habits" author="James Clear" />
-				<BookShelfItem title="Brave New World" author="Aldous Huxley" />
-				<BookShelfItem title="Crossing the Chasm" author="Geoffrey Moore" />
-				<BookShelfItem title="Chip War" author="Chris Miller" />
-				<BookShelfItem title="Deep Work" author="Cal Newport" />
-				<BookShelfItem title="Grit" author="Angela Duckworth" />
-				<BookShelfItem title="Man's Search for Meaning" author="Viktor Frankl" />
-				<BookShelfItem title="Nineteen Eighty-Four" author="George Orwell" />
-				<BookShelfItem title="Never Split the Difference" author="Chris Voss" />
-				<BookShelfItem title="Power and Prediction: The Disruptive Economics of Artificial Intelligence" author="Ajay Agrawal" />
-				<BookShelfItem title="Prediction Machines: The Simple Economics of Artificial Intelligence" author="Ajay Agrawal" />
-				<BookShelfItem title="The Brain that Changes Itself" author="Norman Doidge" />
-				<BookShelfItem title="The Lean Startup" author="Eric Ries" />
-				<BookShelfItem title="The Power of Now" author="Eckhart Tolle" />
-				<BookShelfItem title="The 4-Hour Workweek" author="Tim Ferriss" />
-				<BookShelfItem title="Thinking Fast and Slow" author="Daniel Kahneman" />
-				<BookShelfItem title="Zero to One" author="Peter Thiel" />
+				{[
+					{ title: "Atomic Habits", author: "James Clear" },
+					{ title: "Brave New World", author: "Aldous Huxley" },
+					{ title: "Crossing the Chasm", author: "Geoffrey Moore" },
+					{ title: "Chip War", author: "Chris Miller" },
+					{ title: "Deep Work", author: "Cal Newport" },
+					{ title: "Grit", author: "Angela Duckworth" },
+					{ title: "How to Be an Adult in Relationships: The Five Keys to Mindful Loving", author: "David Richo" },
+					{ title: "Man's Search for Meaning", author: "Viktor Frankl" },
+					{ title: "Nineteen Eighty-Four", author: "George Orwell" },
+					{ title: "Never Split the Difference", author: "Chris Voss" },
+					{ title: "Power and Prediction: The Disruptive Economics of Artificial Intelligence", author: "Ajay Agrawal" },
+					{ title: "Prediction Machines: The Simple Economics of Artificial Intelligence", author: "Ajay Agrawal" },
+					{ title: "The Brain that Changes Itself", author: "Norman Doidge" },
+					{ title: "The Lean Startup", author: "Eric Ries" },
+					{ title: "The Power of Now", author: "Eckhart Tolle" },
+					{ title: "The 4-Hour Workweek", author: "Tim Ferriss" },
+					{ title: "Thinking Fast and Slow", author: "Daniel Kahneman" },
+					{ title: "Zero to One", author: "Peter Thiel" }
+				].map((book) => <BookShelfItem key={book.title} {...book} />)}
 			</ul>
 		</section>
 	</main>
 );
 
-export default HomePage;
+export default HomePage
