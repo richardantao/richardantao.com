@@ -14,7 +14,16 @@ import { ThemeScript } from "./ThemeScript";
 export const viewport: Viewport = {
 	initialScale: 1,
 	width: "device-width",
-	themeColor: "#FFFFFF",
+	themeColor: [
+		{
+			media: "(prefers-color-scheme: light)",
+			color: "#FFFFFF",
+		},
+		{
+			media: "(prefers-color-scheme: dark)",
+			color: "#0A0A0A",
+		},
+	],
 };
 
 export const metadata: Metadata = {
