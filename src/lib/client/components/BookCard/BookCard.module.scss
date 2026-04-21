@@ -1,0 +1,98 @@
+@use "~/styles/abstracts" as *;
+@use "sass:map";
+@use "sass:string";
+
+// Spine color palette — one per book, assigned from a fixed set
+// so the shelf looks varied but intentional
+$spine-colors: (
+  "blue":   (from: #0090e8, to: #002a58),
+  "indigo": (from: #6685e8, to: #2840b8),
+  "teal":   (from: #3ecf8e, to: #085041),
+  "amber":  (from: #f5a623, to: #633806),
+  "slate":  (from: #637284, to: #192738),
+  "violet": (from: #a78bfa, to: #4c1d95),
+);
+
+.card {
+  @include card-base;
+  padding: var(--space-3);
+  cursor: default;
+  transition:
+    border-color var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-out);
+
+  &:hover {
+    border-color: var(--border-strong);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+  }
+}
+
+// Has a review — indicated by indigo border tint
+.hasReview {
+  border-color: var(--accent-secondary-border);
+
+  &:hover {
+    border-color: var(--accent-secondary);
+    box-shadow: var(--shadow-glow-indigo);
+  }
+}
+
+// Anchor wrapper (when review exists)
+.link {
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.spine {
+  height: 80px;
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-3);
+}
+
+// Generate spine color classes from map
+@each $name, $stops in $spine-colors {
+  .spine#{string.to-upper-case(string.slice($name, 1, 1))}#{string.slice($name, 2)} {
+    background: linear-gradient(
+      160deg,
+      map.get($stops, "from") 0%,
+      map.get($stops, "to") 100%
+    );
+  }
+}
+
+.title {
+  @include font-display(700);
+  font-size: var(--text-xs);
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  color: var(--text-primary);
+  margin-bottom: 3px;
+}
+
+.author {
+  @include text-caption;
+  color: var(--text-tertiary);
+  margin-bottom: var(--space-2);
+}
+
+.stars {
+  @include text-caption;
+  color: var(--signal-amber);
+  margin-bottom: var(--space-2);
+  letter-spacing: 1px;
+}
+
+.reviewBadge {
+  @include font-mono(500);
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  background: var(--accent-secondary-subtle);
+  color: var(--accent-secondary);
+  border: 1px solid var(--accent-secondary-border);
+  border-radius: var(--radius-full);
+  padding: 2px var(--space-2);
+  display: inline-block;
+}

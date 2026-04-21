@@ -1,143 +1,28 @@
-import type { FC } from "react";
 import type { Metadata } from "next";
-import Link from "next/link";
-import Image from "next/image";
 
-import "./page.css";
+import { Divider } from "~/lib/client/components/Divider";
+
+import { BookshelfSection } from "./HomeBookshelfSection";
+import { Hero } from "./Hero";
+import { Projects } from "./Projects";
+import { WritingSection } from "./HomeWritingSection";
 
 export const metadata: Metadata = {
-	description: "Personal website of Richard Antao.",
-	keywords: "Richard Antao, Vita, Vita Learning"
+	title: "Richard Antao — Founder, Engineer, Writer",
+	description:
+		"Founder of Vita Learning. Building AI-native study tools for university students. Full-stack engineer writing about startups, product, and open source.",
 };
 
-const BookShelfItem: FC<{ title: string, author: string }> = ({ title, author }) => (
-	<li>
-		{title} - <em>{author}</em>
-	</li>
-);
-
-function getBlogUrl(pathname: string) {
-	return new URL(pathname, "https://blog.vitalearning.ca").href;
+export default function HomePage() {
+	return (
+		<>
+			<Hero />
+			<Divider />
+			<Projects />
+			<Divider />
+			<WritingSection />
+			<Divider />
+			<BookshelfSection />
+		</>
+	);
 }
-
-const HomePage = () => (
-	<main role="main">
-		<header role="banner">
-			<h1>Richard Antao</h1>
-			<Image
-				src="/rich.jpg"
-				alt="Richard Antao's headshot"
-				height={75}
-				width={75}
-				priority
-			/>
-		</header>
-		<hr />
-		<section id="about">
-			<div>
-				<p>
-					A self-taught software developer (more of a <em>&ldquo;hacker&rdquo;</em> than an engineer), interested in exploring
-					better methods and tools for learning and productivity, particularly within the domain of institutional education.
-				</p>
-				<p>
-					I am currently based in the Greater Toronto Area, and I am the founder of <Link href="https://www.vitalearning.ca" target="_blank">Vita Learning</Link>.
-				</p>
-				<p>
-					In my free time I enjoy reading, strength training, and endurance running.
-				</p>
-			</div>
-		</section>
-		<section id="projects">
-			<h2>Projects</h2>
-			<div>
-				<Link href="https://www.vitalearning.ca" target="_blank">
-					<h3>Vita Learning</h3>
-				</Link>
-				<p>
-					Vita Learning is a startup aiming to create personalized learning paths for students
-					to tailor their education based on their goals, interests, and preferences.
-				</p>
-			</div>
-		</section>
-		<section id="blog">
-			<h2>Blog</h2>
-			<div>
-				<div>
-					<Link href={getBlogUrl("/whats-new-in-vitas-v2-revamp")} target="_blank">
-						<h3>What&apos;s New in Vita&apos;s V2 Revamp</h3>
-					</Link>
-					<p>
-						With your feedback, we&apos;ve been hard at work over the last year revamping the Vita app, with a suite of new features, design changes, and an optimized workflow so you can get the most out of your learning experience.
-					</p>
-				</div>
-				<div>
-					<Link href={getBlogUrl("/unleashing-the-power-of-nlp-in-education")} target="_blank">
-						<h3>Unleashing the Power of Natural Language Processing in Education</h3>
-					</Link>
-					<p>
-						They breakthroughs in AI and NLP have opened up a world of possibilities in the field of education. 🚀
-					</p>
-					<p>
-						By harnessing the potential of NLP, students and educators can benefit in various ways, ranging from personalized learning to improved assessment techniques.
-					</p>
-				</div>
-				<div>
-					<Link href={getBlogUrl("/launching-vita")} target="_blank">
-						<h3>Launching Vita</h3>
-					</Link>
-					<p>
-						We&apos;re very excited to announce the official launch of Vita! 🥳
-					</p>
-					<p>
-						We&apos;re on a mission to create tailored learning experiences that enable students to personalize their education to their goals, preferences, and passions...
-					</p>
-				</div>
-				<div>
-					<Link href={getBlogUrl("/its-time-to-place-mastery-before-marks")} target="_blank">
-						<h3>It&apos;s Time to Place Mastery before Marks</h3>
-					</Link>
-					<p>
-						Try and think back to when you were in school. Did you ever get to a point where you were so busy
-						with assignments, classes, and extra-curricular activities that you didn&apos;t have the time...
-					</p>
-				</div>
-				<div>
-					<Link href={getBlogUrl("/the-current-state-of-the-education-system")} target="_blank">
-						<h3>The Current State of the Education System</h3>
-					</Link>
-					<p>
-						Education is at the core of a good and prosperous life. Given it&apos;s importance in society, why
-						have we not seen the same rate of progression compared to other industries over the last 40 years?
-					</p>
-				</div>
-			</div>
-		</section>
-		<section id="bookshelf">
-			<h2>Bookshelf</h2>
-			<ul>
-				{[
-					{ title: "Atomic Habits", author: "James Clear" },
-					{ title: "Brave New World", author: "Aldous Huxley" },
-					{ title: "Crossing the Chasm", author: "Geoffrey Moore" },
-					{ title: "Chip War", author: "Chris Miller" },
-					{ title: "Deep Work", author: "Cal Newport" },
-					{ title: "Grit", author: "Angela Duckworth" },
-					{ title: "How to Be an Adult in Relationships: The Five Keys to Mindful Loving", author: "David Richo" },
-					{ title: "Man's Search for Meaning", author: "Viktor Frankl" },
-					{ title: "Nineteen Eighty-Four", author: "George Orwell" },
-					{ title: "Never Split the Difference", author: "Chris Voss" },
-					{ title: "Power and Prediction: The Disruptive Economics of Artificial Intelligence", author: "Ajay Agrawal" },
-					{ title: "Prediction Machines: The Simple Economics of Artificial Intelligence", author: "Ajay Agrawal" },
-					{ title: "The Brain that Changes Itself", author: "Norman Doidge" },
-					{ title: "The Lean Startup", author: "Eric Ries" },
-					{ title: "The Power of Now", author: "Eckhart Tolle" },
-					{ title: "The 4-Hour Workweek", author: "Tim Ferriss" },
-					{ title: "Thinking Fast and Slow", author: "Daniel Kahneman" },
-					{ title: "Zero to One", author: "Peter Thiel" }
-				].map((book) => <BookShelfItem key={book.title} {...book} />)}
-			</ul>
-		</section>
-	</main>
-);
-
-export default HomePage

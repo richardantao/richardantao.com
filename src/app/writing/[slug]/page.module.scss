@@ -1,0 +1,196 @@
+@use "~/styles/abstracts" as *;
+
+// =============================================================================
+// WRITING [SLUG] — /writing/[slug]
+// =============================================================================
+
+// --- Article header ---
+.header {
+  padding-top: var(--space-16);
+  padding-bottom: var(--space-12);
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: var(--space-12);
+}
+
+.back {
+  @include font-mono(500);
+  font-size: var(--text-xs);
+  color: var(--text-tertiary);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-8);
+  transition: color var(--duration-fast) var(--ease-out);
+
+  &:hover {
+    color: var(--accent);
+  }
+
+  &::before {
+    content: '←';
+    font-style: normal;
+  }
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-5);
+}
+
+.title {
+  @include text-display-md;
+  color: var(--text-primary);
+  margin-bottom: var(--space-5);
+  max-width: 22ch;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.metaItem {
+  @include font-mono;
+  font-size: var(--text-xs);
+  color: var(--text-tertiary);
+  letter-spacing: 0.04em;
+}
+
+.metaDivider {
+  width: 3px;
+  height: 3px;
+  border-radius: var(--radius-full);
+  background: var(--border-strong);
+  flex-shrink: 0;
+}
+
+// --- Article body ---
+// .prose is a global utility class from globals.scss
+// This wrapper just controls max-width + layout
+.article {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-8);
+  padding-bottom: var(--space-24);
+
+  @include lg {
+    grid-template-columns: minmax(0, 1fr) 200px;
+    align-items: start;
+    gap: var(--space-16);
+  }
+}
+
+.body {
+  min-width: 0;
+}
+
+.comingSoonBanner {
+  @include font-mono(600);
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--accent);
+  background: var(--accent-subtle);
+  color: var(--accent-secondary);
+  border-radius: var(--radius-full);
+  padding: var(--space-2) var(--space-4);
+  margin-bottom: var(--space-4);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 10px;
+}
+
+// --- Table of contents (desktop sidebar) ---
+.toc {
+  display: none;
+
+  @include lg {
+    display: block;
+    position: sticky;
+    top: calc(60px + var(--space-8)); // nav height + breathing room
+  }
+}
+
+.tocLabel {
+  @include font-mono(500);
+  font-size: 10px;
+  color: var(--text-tertiary);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-4);
+}
+
+.tocList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.tocLink {
+  @include text-caption;
+  color: var(--text-tertiary);
+  line-height: 1.4;
+  padding-left: var(--space-3);
+  border-left: 1px solid var(--border-subtle);
+  transition:
+    color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out);
+  display: block;
+
+  &:hover {
+    color: var(--text-secondary);
+    border-color: var(--border-default);
+  }
+
+  &.active {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+}
+
+// --- Footer nav ---
+.postNav {
+  border-top: 1px solid var(--border-subtle);
+  padding-top: var(--space-10);
+  padding-bottom: var(--space-16);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+.postNavItem {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  text-decoration: none;
+
+  &:last-child {
+    text-align: right;
+    align-items: flex-end;
+  }
+
+  &:hover .postNavTitle {
+    color: var(--accent);
+  }
+}
+
+.postNavLabel {
+  @include font-mono(500);
+  font-size: 10px;
+  color: var(--text-tertiary);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.postNavTitle {
+  @include text-heading-sm;
+  color: var(--text-primary);
+  transition: color var(--duration-fast) var(--ease-out);
+  max-width: 32ch;
+  line-height: 1.3;
+}

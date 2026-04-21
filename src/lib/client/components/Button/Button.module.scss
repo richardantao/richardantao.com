@@ -1,0 +1,117 @@
+@use '~/styles/abstracts' as *;
+
+// =============================================================================
+// BUTTON
+// =============================================================================
+
+.btn {
+  @include font-display(600);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  border-radius: var(--radius-lg);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  transition:
+    background var(--duration-base) var(--ease-out),
+    color var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-out);
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid transparent;
+  line-height: 1;
+
+  &:disabled {
+    opacity: 0.45;
+    pointer-events: none;
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
+
+// --- Sizes ---
+.sm {
+  font-size: var(--text-sm);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-md);
+}
+
+.md {
+  font-size: var(--text-base);
+  padding: var(--space-3) var(--space-6);
+}
+
+.lg {
+  font-size: var(--text-lg);
+  padding: var(--space-4) var(--space-8);
+  border-radius: var(--radius-xl);
+}
+
+// --- Variants ---
+.primary {
+  background: var(--accent);
+  color: var(--text-on-accent);
+  border-color: transparent;
+  box-shadow: 0 1px 3px rgba(0, 144, 232, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+
+  &:hover {
+    background: var(--accent-hover);
+    box-shadow: var(--shadow-glow-blue), 0 4px 12px rgba(0, 144, 232, 0.25);
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.secondary {
+  background: var(--interactive-bg);
+  color: var(--text-primary);
+  border-color: var(--border-default);
+
+  &:hover {
+    background: var(--interactive-bg-hover);
+    border-color: var(--border-strong);
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.ghost {
+  background: transparent;
+  color: var(--text-secondary);
+  border-color: transparent;
+
+  &:hover {
+    background: var(--interactive-bg);
+    color: var(--text-primary);
+    border-color: var(--border-subtle);
+  }
+}
+
+.outlineAccent {
+  background: transparent;
+  color: var(--accent);
+  border-color: var(--accent-border);
+
+  &:hover {
+    background: var(--accent);
+    color: var(--text-on-accent);
+    border-color: var(--accent);
+    box-shadow: var(--shadow-glow-blue);
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,332 @@
+@use "~/styles/abstracts" as *;
+
+.page {
+	padding-bottom: var(--space-24);
+}
+
+// ─── Hero ────────────────────────────────────────────────────────────────────
+
+.hero {
+	padding-top: var(--space-20);
+	padding-bottom: var(--space-16);
+	position: relative;
+
+	&::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		background: var(--gradient-hero);
+		pointer-events: none;
+	}
+
+	@include md {
+		padding-top: var(--space-24);
+	}
+}
+
+.heroInner {
+	position: relative;
+	z-index: 1;
+	display: grid;
+	gap: var(--space-10);
+
+	@include lg {
+		grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+		align-items: start;
+		gap: var(--space-12);
+	}
+}
+
+.heroCopy {
+	min-width: 0;
+}
+
+.overline {
+	@include section-overline;
+	margin-bottom: var(--space-4);
+}
+
+.title {
+	@include text-display-md;
+	color: var(--text-primary);
+	max-width: 16ch;
+	margin-bottom: var(--space-5);
+}
+
+.description {
+	@include text-body-lg;
+	color: var(--text-secondary);
+	max-width: 640px;
+	margin-bottom: var(--space-6);
+	font-weight: 300;
+}
+
+.tagRow {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-2);
+	margin-bottom: var(--space-8);
+}
+
+.actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-3);
+	align-items: center;
+}
+
+// ─── Hero aside ──────────────────────────────────────────────────────────────
+
+.heroAside {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-4);
+}
+
+.statCard,
+.storyCard,
+.quoteCard,
+.miniStat {
+	@include card-base;
+}
+
+.statCard,
+.storyCard,
+.quoteCard {
+	padding: var(--space-6);
+}
+
+.statLabel {
+	@include text-overline;
+	color: var(--accent);
+	margin-bottom: var(--space-4);
+}
+
+.statValue {
+	@include text-heading-lg;
+	color: var(--text-primary);
+	margin-bottom: var(--space-3);
+}
+
+.statCopy {
+	@include text-body-sm;
+	color: var(--text-secondary);
+}
+
+.statGrid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: var(--space-3);
+
+	@include below-sm {
+		grid-template-columns: 1fr;
+	}
+}
+
+.miniStat {
+	padding: var(--space-4);
+	background-color: var(--bg-overlay);
+}
+
+.miniStatLabel {
+	@include text-overline;
+	color: var(--text-tertiary);
+	margin-bottom: var(--space-2);
+	display: block;
+}
+
+.miniStatValue {
+	@include text-label;
+	color: var(--text-primary);
+	display: block;
+}
+
+// ─── Sections ────────────────────────────────────────────────────────────────
+
+.section {
+	padding-top: var(--space-10);
+
+	@include md {
+		padding-top: var(--space-12);
+	}
+}
+
+// ─── Story ───────────────────────────────────────────────────────────────────
+
+.storyGrid {
+	display: grid;
+	gap: var(--space-4);
+	margin-top: var(--space-6);
+
+	@include lg {
+		grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+		align-items: start;
+		gap: var(--space-5);
+	}
+}
+
+.storyLead {
+	@include text-heading-sm;
+	color: var(--text-primary);
+	margin-bottom: var(--space-4);
+}
+
+.storyBody {
+	@include text-body;
+	color: var(--text-secondary);
+
+	p + p {
+		margin-top: var(--space-4);
+	}
+}
+
+.quoteCard {
+	padding-top: var(--space-8);
+	background:
+		radial-gradient(circle at top right, var(--accent-subtle), transparent 42%),
+		var(--bg-raised);
+}
+
+.quoteMark {
+	@include font-display(800);
+	font-size: clamp(3rem, 7vw, 5rem);
+	line-height: 0.7;
+	color: var(--accent-secondary);
+	margin-bottom: var(--space-4);
+}
+
+.quoteText {
+	@include text-body-lg;
+	color: var(--text-primary);
+	margin-bottom: var(--space-5);
+	font-weight: 300;
+}
+
+.quoteMeta {
+	@include text-overline;
+	color: var(--text-tertiary);
+}
+
+// ─── Stack ───────────────────────────────────────────────────────────────────
+
+.stackGrid {
+	display: grid;
+	gap: var(--space-3);
+	margin-top: var(--space-6);
+
+	@include sm {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	@include lg {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
+}
+
+.stackCard {
+	@include card-base;
+	padding: var(--space-5);
+}
+
+.stackLayer {
+	@include text-overline;
+	color: var(--accent);
+	margin-bottom: var(--space-3);
+	display: block;
+}
+
+.stackTitle {
+	@include text-heading-sm;
+	color: var(--text-primary);
+	margin-bottom: var(--space-2);
+}
+
+.stackItems {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-1);
+}
+
+.stackItem {
+	@include font-mono;
+	font-size: var(--text-xs);
+	color: var(--text-tertiary);
+	letter-spacing: 0.03em;
+}
+
+// ─── Marketing site preview ───────────────────────────────────────────────────
+
+.previewSection {
+	padding-top: var(--space-10);
+
+	@include md {
+		padding-top: var(--space-12);
+	}
+}
+
+.previewIntro {
+	@include text-body;
+	color: var(--text-secondary);
+	margin-top: calc(var(--space-6) * -1);
+	margin-bottom: var(--space-6);
+	max-width: 680px;
+}
+
+.iframeWrap {
+	@include card-base;
+	overflow: hidden;
+	border-radius: var(--radius-2xl);
+	box-shadow: var(--shadow-lg);
+}
+
+.iframeBar {
+	display: flex;
+	align-items: center;
+	gap: var(--space-3);
+	padding: var(--space-3) var(--space-5);
+	background: var(--bg-overlay);
+	border-bottom: 1px solid var(--border-subtle);
+}
+
+.iframeTrafficLights {
+	display: flex;
+	gap: 6px;
+	flex-shrink: 0;
+}
+
+.trafficDot {
+	width: 10px;
+	height: 10px;
+	border-radius: var(--radius-full);
+
+	&:nth-child(1) { background: #ff5f57; }
+	&:nth-child(2) { background: #febc2e; }
+	&:nth-child(3) { background: #28c840; }
+}
+
+.iframeUrl {
+	@include font-mono;
+	font-size: var(--text-xs);
+	color: var(--text-tertiary);
+	background: var(--interactive-bg);
+	border: 1px solid var(--border-subtle);
+	border-radius: var(--radius-md);
+	padding: var(--space-1) var(--space-3);
+	flex: 1;
+	max-width: 320px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.iframe {
+	width: 100%;
+	height: 560px;
+	border: none;
+	display: block;
+	background: var(--bg-raised);
+
+	@include md {
+		height: 680px;
+	}
+}

@@ -1,0 +1,36 @@
+@use "~/styles/abstracts" as *;
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+
+  @include sm {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  @include lg {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+
+.legend {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  @include font-mono;
+  font-size: 11px;
+  color: var(--text-tertiary);
+  letter-spacing: 0.03em;
+  margin-bottom: var(--space-4);
+}
+
+.legendSwatch {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-sm);
+  background: var(--accent-secondary-subtle);
+  border: 1px solid var(--accent-secondary-border);
+  flex-shrink: 0;
+}

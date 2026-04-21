@@ -1,0 +1,128 @@
+@use "~/styles/abstracts" as *;
+
+// =============================================================================
+// WRITING INDEX — /writing
+// =============================================================================
+
+// --- Page header ---
+.header {
+  padding-top: var(--space-20);
+  padding-bottom: var(--space-16);
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gradient-hero);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  @include md {
+    padding-top: var(--space-24);
+  }
+}
+
+.headerInner {
+  position: relative;
+  z-index: 1;
+}
+
+.overline {
+  @include section-overline;
+  margin-bottom: var(--space-4);
+}
+
+.title {
+  @include text-display-md;
+  color: var(--text-primary);
+  margin-bottom: var(--space-5);
+}
+
+.description {
+  @include text-body-lg;
+  color: var(--text-tertiary);
+  font-weight: 300;
+  max-width: 480px;
+}
+
+// --- Filters ---
+.filters {
+  padding: var(--space-6) 0;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: var(--space-2);
+}
+
+.filterRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.filterLabel {
+  @include font-mono(500);
+  font-size: var(--text-xs);
+  color: var(--text-tertiary);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-right: var(--space-2);
+  flex-shrink: 0;
+}
+
+.filterBtn {
+  @include font-mono(500);
+  font-size: var(--text-xs);
+  color: var(--text-tertiary);
+  background: transparent;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-full);
+  padding: var(--space-1) var(--space-3);
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition:
+    color var(--duration-fast) var(--ease-out),
+    background var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out);
+
+  &:hover {
+    color: var(--text-primary);
+    border-color: var(--border-strong);
+    background: var(--interactive-bg);
+  }
+}
+
+.filterBtn.active {
+  color: var(--accent);
+  border-color: var(--accent-border);
+  background: var(--accent-subtle);
+}
+
+// --- Post count ---
+.postCount {
+  @include font-mono;
+  font-size: var(--text-xs);
+  color: var(--text-tertiary);
+  letter-spacing: 0.04em;
+  padding: var(--space-5) 0 var(--space-2);
+}
+
+// --- Post list ---
+// PostRow is a shared card component — PostRow.module.scss handles the row itself.
+// This wrapper just owns the list container and empty state.
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+// --- Empty state ---
+.empty {
+  padding: var(--space-16) 0;
+  text-align: center;
+}
+
+.emptyText {
+  @include text-body;
+  color: var(--text-tertiary);
+}

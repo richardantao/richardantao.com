@@ -1,0 +1,35 @@
+@use "~/styles/abstracts" as *;
+
+.tag {
+  @include tag-base;
+}
+
+.blue {
+  background: var(--accent-subtle);
+  color: var(--accent);
+  border: 1px solid var(--accent-border);
+}
+
+.indigo {
+  background: var(--accent-secondary-subtle);
+  color: var(--accent-secondary);
+  border: 1px solid var(--accent-secondary-border);
+}
+
+.green {
+  background: var(--signal-green-subtle);
+  color: var(--signal-green);
+  border: 1px solid var(--signal-green-border);
+}
+
+.amber {
+  background: var(--signal-amber-subtle);
+  color: var(--signal-amber);
+  border: 1px solid rgba(245, 166, 35, 0.2);
+}
+
+.neutral {
+  background: var(--interactive-bg);
+  color: var(--text-tertiary);
+  border: 1px solid var(--border-default);
+}

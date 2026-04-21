@@ -1,42 +1,46 @@
 {
 	"name": "richardantao",
-	"version": "1.0.0",
+	"version": "2.0.0",
 	"private": true,
 	"engines": {
-		"node": "22.x",
+		"node": "24.x",
 		"npm": "11.x"
 	},
 	"sideEffects": false,
 	"scripts": {
-		"analyze": "cross-env ANALYZE=true next build",
+		"analyze": "next experimental-analyze",
 		"dev": "next dev -p 1001",
 		"build": "next build",
 		"postbuild": "next-sitemap",
 		"start": "next start",
-		"lint": "next lint"
+		"lint": "biome check",
+		"lint:fix": "biome format --write"
 	},
 	"dependencies": {
 		"@fortawesome/fontawesome-pro-solid": "^5.1.0-3",
-		"@fortawesome/fontawesome-svg-core": "^6.7.2",
-		"@fortawesome/free-brands-svg-icons": "^6.7.2",
-		"@fortawesome/pro-solid-svg-icons": "^6.7.2",
-		"@fortawesome/react-fontawesome": "^0.2.2",
-		"next": "15.3.4",
+		"@fortawesome/fontawesome-svg-core": "^7.2.0",
+		"@fortawesome/free-brands-svg-icons": "^7.2.0",
+		"@fortawesome/pro-solid-svg-icons": "^7.2.0",
+		"@fortawesome/react-fontawesome": "^3.3.0",
+		"clsx": "^2.1.1",
+		"gray-matter": "^4.0.3",
+		"jsoncurrent": "^0.2.0",
+		"marked": "^18.0.2",
+		"next": "16.2.4",
+		"next-mdx-remote": "^6.0.0",
 		"next-sitemap": "^4.2.3",
-		"nextjs-toploader": "^3.8.16",
-		"react": "19.1.0",
-		"react-dom": "19.1.0"
+		"nextjs-toploader": "^3.9.17",
+		"posthog-js": "^1.369.3",
+		"react": "19.2.5",
+		"react-dom": "19.2.5",
+		"react-markdown": "^10.1.0"
 	},
 	"devDependencies": {
-		"@next/bundle-analyzer": "^15.3.4",
-		"@types/jest": "^30.0.0",
-		"@types/node": "24.0.8",
-		"@types/react": "19.1.8",
-		"@types/react-dom": "19.1.6",
-		"cross-env": "^7.0.3",
-		"eslint": "9.30.0",
-		"eslint-config-next": "15.3.4",
-		"jest": "^30.0.3",
-		"typescript": "5.8.3"
+		"@biomejs/biome": "2.4.12",
+		"@types/node": "25.6.0",
+		"@types/react": "19.2.14",
+		"@types/react-dom": "19.2.3",
+		"sass": "^1.99.0",
+		"typescript": "6.0.3"
 	}
 }

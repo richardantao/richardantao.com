@@ -1,0 +1,79 @@
+@use "~/styles/abstracts" as *;
+
+.row {
+  display: grid;
+  grid-template-columns: 72px 1fr 20px;
+  gap: var(--space-5);
+  align-items: flex-start;
+  padding: var(--space-5) 0;
+  border-bottom: 1px solid var(--border-subtle);
+  text-decoration: none;
+  transition:
+    background var(--duration-fast) var(--ease-out),
+    padding-left var(--duration-base) var(--ease-out);
+
+  &:first-of-type {
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  &:hover {
+    .title {
+      color: var(--accent);
+    }
+
+    .arrow {
+      color: var(--accent);
+      transform: translateX(3px);
+    }
+  }
+
+  @include below-sm {
+    grid-template-columns: 1fr 20px;
+
+    .date {
+      display: none;
+    }
+  }
+}
+
+.date {
+  @include text-overline;
+  color: var(--text-tertiary);
+  padding-top: 4px;
+  letter-spacing: 0.04em;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.title {
+  @include text-heading-sm;
+  color: var(--text-primary);
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.excerpt {
+  @include text-body-sm;
+  color: var(--text-tertiary);
+  line-height: 1.55;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-1);
+}
+
+.arrow {
+  @include text-caption;
+  color: var(--text-tertiary);
+  padding-top: 5px;
+  transition:
+    transform var(--duration-base) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
+  justify-self: end;
+}

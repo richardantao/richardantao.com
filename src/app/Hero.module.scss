@@ -1,0 +1,205 @@
+@use "~/styles/abstracts" as *;
+
+.section {
+  padding-top: var(--space-20);
+  padding-bottom: var(--space-24);
+  position: relative;
+
+  // Radial hero glow — decorative, pointer-events off
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gradient-hero);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  @include md {
+    padding-top: var(--space-32);
+  }
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+
+  @include lg {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-16);
+  }
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+}
+
+// --- Headshot ---
+.photoWrap {
+  flex-shrink: 0;
+  order: -1; // photo above text on mobile
+
+  @include lg {
+    order: 0; // photo right on desktop
+  }
+}
+
+.photo {
+  width: 140px;
+  height: 140px;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--border-default);
+  object-fit: cover;
+  display: block;
+  transition: border-color var(--duration-base) var(--ease-out);
+
+  @include lg {
+    width: 200px;
+    height: 200px;
+  }
+
+  &:hover {
+    border-color: var(--accent);
+    box-shadow: var(--shadow-glow-blue);
+  }
+}
+
+// Placeholder shown when no photo is provided
+.photoPlaceholder {
+  width: 140px;
+  height: 140px;
+  border-radius: var(--radius-full);
+  border: 2px dashed var(--border-default);
+  background: var(--bg-raised);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+
+  @include lg {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+.photoPlaceholderIcon {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  background: var(--interactive-bg);
+  border: 1px solid var(--border-default);
+
+  // Simple silhouette using clip-path
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 12px;
+    border-radius: var(--radius-full);
+    background: var(--border-strong);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 10px;
+    border-radius: 10px 10px 0 0;
+    background: var(--border-strong);
+  }
+}
+
+.photoPlaceholderLabel {
+  @include font-mono;
+  font-size: 10px;
+  color: var(--text-tertiary);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.overline {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-6);
+}
+
+.overlineDot {
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: var(--radius-full);
+  box-shadow: 0 0 8px var(--accent);
+  flex-shrink: 0;
+  @include pulse-glow;
+}
+
+.overlineText {
+  @include text-overline;
+  color: var(--accent);
+}
+
+.name {
+  @include text-display-xl;
+  color: var(--text-primary);
+  margin-bottom: var(--space-6);
+  max-width: 100%;
+
+  @include below-sm {
+    font-size: clamp(2.25rem, 12vw, 3.25rem);
+    letter-spacing: -0.03em;
+    line-height: 0.98;
+  }
+
+  // "." period — brand mark
+  .period {
+    color: var(--accent);
+  }
+}
+
+.tagline {
+  @include text-body-lg;
+  color: var(--text-secondary);
+  font-weight: 300;
+  max-width: 520px;
+  margin-bottom: var(--space-8);
+}
+
+.roles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-10);
+}
+
+.roleChip {
+  @include text-overline;
+  color: var(--text-tertiary);
+  background: var(--interactive-bg);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-full);
+  padding: var(--space-2) var(--space-4);
+  letter-spacing: 0.05em;
+}
+
+.cta {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  align-items: center;
+}

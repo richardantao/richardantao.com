@@ -1,0 +1,89 @@
+@use "~/styles/abstracts" as *;
+
+.card {
+  @include card-interactive;
+  @include accent-top-border;
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  background: var(--interactive-bg);
+  border: 1px solid var(--border-default);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-5);
+  @include font-display(800);
+  font-size: var(--text-base);
+  color: var(--accent);
+  letter-spacing: -0.02em;
+  flex-shrink: 0;
+}
+
+.icon.indigo {
+  color: var(--accent-secondary);
+}
+
+.name {
+  @include text-heading-md;
+  color: var(--text-primary);
+  margin-bottom: var(--space-2);
+}
+
+.description {
+  @include text-body-sm;
+  color: var(--text-tertiary);
+  line-height: 1.6;
+  margin-bottom: var(--space-5);
+  flex: 1;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-5);
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--border-subtle);
+  margin-top: auto;
+}
+
+.externalLink {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  background: none;
+  border: none;
+  padding: var(--space-1);
+  margin: calc(var(--space-1) * -1);
+  cursor: pointer;
+  color: inherit;
+
+  &:hover {
+    color: var(--accent);
+  }
+}
+
+.arrow {
+  @include text-caption;
+  color: var(--text-tertiary);
+  transition: transform var(--duration-base) var(--ease-out),
+              color var(--duration-base) var(--ease-out);
+}
+
+.card:hover .arrow {
+  color: var(--accent);
+  transform: translateX(3px);
+}

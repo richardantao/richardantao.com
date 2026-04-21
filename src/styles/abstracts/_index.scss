@@ -1,0 +1,12 @@
+// =============================================================================
+// ABSTRACTS — single import for all component .module.scss files
+//
+// Usage in any component:
+//   @use '~/styles/abstracts' as *;
+//
+// Exports: all primitives (as p.*), all mixins (directly usable)
+// Does NOT emit any CSS — safe to import everywhere without duplication
+// =============================================================================
+
+@forward 'mixins';
+@forward '../tokens/primitives';

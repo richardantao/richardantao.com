@@ -1,0 +1,178 @@
+@use "~/styles/abstracts" as *;
+
+// =============================================================================
+// BOOKSHELF [SLUG] — /bookshelf/[slug]
+// =============================================================================
+
+// --- Review header ---
+.header {
+  padding-top: var(--space-16);
+  padding-bottom: var(--space-12);
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: var(--space-12);
+}
+
+.back {
+  @include font-mono(500);
+  font-size: var(--text-xs);
+  color: var(--text-tertiary);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-8);
+  transition: color var(--duration-fast) var(--ease-out);
+
+  &:hover {
+    color: var(--accent);
+  }
+
+  &::before {
+    content: '←';
+    font-style: normal;
+  }
+}
+
+.bookCard {
+  display: flex;
+  gap: var(--space-8);
+  align-items: flex-start;
+  flex-wrap: wrap;
+
+  @include md {
+    flex-wrap: nowrap;
+  }
+}
+
+.spine {
+  width: 72px;
+  min-width: 72px;
+  height: 104px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  flex-shrink: 0;
+
+  @include md {
+    width: 88px;
+    min-width: 88px;
+    height: 124px;
+  }
+}
+
+// Spine color variants — mirrors BookCard
+.spineBlue   { background: linear-gradient(160deg, #0090e8 0%, #002a58 100%); }
+.spineIndigo { background: linear-gradient(160deg, #6685e8 0%, #2840b8 100%); }
+.spineTeal   { background: linear-gradient(160deg, #3ecf8e 0%, #085041 100%); }
+.spineAmber  { background: linear-gradient(160deg, #f5a623 0%, #633806 100%); }
+.spineSlate  { background: linear-gradient(160deg, #637284 0%, #192738 100%); }
+.spineViolet { background: linear-gradient(160deg, #a78bfa 0%, #4c1d95 100%); }
+
+.bookInfo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.genres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.title {
+  @include text-display-md;
+  color: var(--text-primary);
+  line-height: 1.1;
+}
+
+.author {
+  @include text-body-lg;
+  color: var(--text-tertiary);
+  font-weight: 300;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.stars {
+  display: flex;
+  gap: 3px;
+  font-size: var(--text-lg);
+}
+
+.starFilled { color: var(--signal-amber); }
+.starEmpty  { color: var(--border-strong); }
+
+.metaItem {
+  @include font-mono;
+  font-size: var(--text-xs);
+  color: var(--text-tertiary);
+  letter-spacing: 0.04em;
+}
+
+.metaDivider {
+  width: 3px;
+  height: 3px;
+  border-radius: var(--radius-full);
+  background: var(--border-strong);
+  flex-shrink: 0;
+}
+
+// --- Review body ---
+.article {
+  padding-bottom: var(--space-24);
+}
+
+// .prose is global — applied directly in JSX
+
+// --- Footer nav ---
+.bookNav {
+  border-top: 1px solid var(--border-subtle);
+  padding-top: var(--space-10);
+  padding-bottom: var(--space-16);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+.bookNavItem {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  text-decoration: none;
+
+  &:last-child {
+    text-align: right;
+    align-items: flex-end;
+  }
+
+  &:hover .bookNavTitle {
+    color: var(--accent);
+  }
+}
+
+.bookNavLabel {
+  @include font-mono(500);
+  font-size: 10px;
+  color: var(--text-tertiary);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.bookNavTitle {
+  @include text-heading-sm;
+  color: var(--text-primary);
+  transition: color var(--duration-fast) var(--ease-out);
+  max-width: 28ch;
+  line-height: 1.3;
+}
+
+.bookNavAuthor {
+  @include text-caption;
+  color: var(--text-tertiary);
+}
