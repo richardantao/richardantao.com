@@ -74,13 +74,13 @@ function getTag(tag: TagKey): PostMeta["tags"][number] {
 
 export const WRITING_POSTS: PostMeta[] = [
 	{
-		slug: "jsoncurrent-open-sourced-competitive-advantage",
-		title: "jsoncurrent - Why I Open Sourced a Competitive Advantage",
+		slug: "jsoncurrent-stepping-into-the-world-of-open-source",
+		title: "jsoncurrent - Stepping Into the World of Open Source",
 		excerpt:
-			"Why I open sourced infrastructure that could have stayed private, and the strategic upside it unlocked.",
-		...getWritingDateParts(2026, 4, 24),
+			"Building jsoncurrent in the open - the motivations, efforts, and lessons learned shipping my first OSS library while building a startup.",
+		...getWritingDateParts(2026, 4, 22),
 		readingTime: "4 min",
-		tags: [getTag("open-source"), getTag("essay")],
+		tags: [getTag("open-source"), getTag("personal"), getTag("reflection")],
 		comingSoon: true,
 	},
 	{
