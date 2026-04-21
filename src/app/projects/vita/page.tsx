@@ -170,9 +170,9 @@ export default function VitaPage(_: PageProps<"/projects/vita">) {
 						<aside className={styles.quoteCard}>
 							<p className={styles.quoteMark}>"</p>
 							<p className={styles.quoteText}>
-								Vita is a slider — where one end is fully manual, and the other
-								is fully automated. The value is letting the student choose
-								where they sit on it.
+								Think of Vita as an adjustable slider — where one end is fully
+								manual, and the other is fully automated. The value is letting
+								the student choose where on the slider they want to be.
 							</p>
 							<p className={styles.quoteMeta}>
 								10K → 100K users · September 2026 launch
