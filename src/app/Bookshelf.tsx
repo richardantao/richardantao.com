@@ -2,9 +2,9 @@ import { BookCard } from "~/lib/client/components/BookCard";
 import { SectionHeader } from "~/lib/client/components/SectionHeader";
 import { HOME_BOOKS } from "~/lib/shared/fixtures/books";
 
-import styles from "./HomeBookshelfSection.module.scss";
+import styles from "./Bookshelf.module.scss";
 
-export function BookshelfSection() {
+export function Bookshelf() {
 	return (
 		<section aria-labelledby="bookshelf-heading">
 			<div className="container">

@@ -2,9 +2,9 @@ import { PostRow } from "~/lib/client/components/PostRow";
 import { SectionHeader } from "~/lib/client/components/SectionHeader";
 import { HOME_WRITING_POSTS } from "~/lib/shared/fixtures/writing";
 
-import styles from "./HomeWritingSection.module.scss";
+import styles from "./Writing.module.scss";
 
-export function WritingSection() {
+export function Writing() {
 	return (
 		<section aria-labelledby="writing-heading">
 			<div className="container">
