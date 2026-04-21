@@ -102,7 +102,6 @@ export const WRITING_POSTS: PostMeta[] = [
 		readingTime: "5 min",
 		tags: [getTag("product"), getTag("guide")],
 		comingSoon: true,
-		hiddenInProduction: true,
 	},
 	{
 		slug: "love-is-the-answer",
