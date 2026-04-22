@@ -80,7 +80,7 @@ export const WRITING_POSTS: PostMeta[] = [
 			"Building jsoncurrent in the open - the motivations, efforts, and lessons learned shipping my first OSS library while building a startup.",
 		...getWritingDateParts(2026, 4, 22),
 		readingTime: "4 min",
-		tags: [getTag("open-source"), getTag("personal"), getTag("reflection")],
+		tags: [getTag("open-source"), getTag("personal"), getTag("essay")],
 		comingSoon: true,
 	},
 	{
