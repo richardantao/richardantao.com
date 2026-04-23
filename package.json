@@ -7,7 +7,7 @@
 		"npm": "11.x"
 	},
 	"sideEffects": false,
-	"packageManager": "pnpm@10.33.1",
+	"packageManager": "pnpm@10.33.2",
 	"scripts": {
 		"analyze": "next experimental-analyze",
 		"dev": "next dev -p 1001",
@@ -35,7 +35,7 @@
 		"next-mdx-remote": "^6.0.0",
 		"next-sitemap": "^4.2.3",
 		"nextjs-toploader": "^3.9.17",
-		"posthog-js": "^1.370.1",
+		"posthog-js": "^1.371.2",
 		"react": "19.2.5",
 		"react-dom": "19.2.5",
 		"react-markdown": "^10.1.0",
@@ -44,7 +44,7 @@
 		"sugar-high": "^1.1.0"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.4.12",
+		"@biomejs/biome": "2.4.13",
 		"@types/node": "25.6.0",
 		"@types/react": "19.2.14",
 		"@types/react-dom": "19.2.3",
