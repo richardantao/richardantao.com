@@ -28,6 +28,9 @@ export async function getAllPosts(): Promise<PostMeta[]> {
 			readingTime: data.readingTime as string, // e.g. "8 min"
 			tags: (data.tags ?? []) as PostMeta["tags"],
 			timestamp: new Date(data.date as string).getTime(),
+			keywords: Array.isArray(data.keywords)
+				? data.keywords.filter((k): k is string => typeof k === "string")
+				: [],
 		} satisfies PostMeta;
 	});
 
@@ -55,6 +58,9 @@ export async function getPost(slug: string): Promise<{
 			readingTime: data.readingTime as string,
 			tags: (data.tags ?? []) as PostMeta["tags"],
 			timestamp: new Date(data.date as string).getTime(),
+			keywords: Array.isArray(data.keywords)
+				? data.keywords.filter((k): k is string => typeof k === "string")
+				: [],
 		},
 		content,
 	};

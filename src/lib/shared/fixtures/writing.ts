@@ -72,6 +72,10 @@ function getTag(tag: TagKey): PostMeta["tags"][number] {
 	return entry;
 }
 
+function getKeywordsFromTags(tags: PostMeta["tags"]): string[] {
+	return tags.map(tag => tag.label.toLowerCase());
+}
+
 export const WRITING_POSTS: PostMeta[] = [
 	{
 		slug: "jsoncurrent-stepping-into-the-world-of-open-source",
@@ -81,6 +85,7 @@ export const WRITING_POSTS: PostMeta[] = [
 		...getWritingDateParts(2026, 4, 22),
 		readingTime: "7 min",
 		tags: [getTag("open-source"), getTag("personal"), getTag("essay")],
+		keywords: ["jsoncurrent", "json", "open source", "streaming", "llms"],
 	},
 	{
 		slug: "deep-dive-into-passion",
@@ -90,6 +95,7 @@ export const WRITING_POSTS: PostMeta[] = [
 		...getWritingDateParts(2026, 4, 26),
 		readingTime: "10 min",
 		tags: [getTag("philosophy"), getTag("reflection")],
+		keywords: getKeywordsFromTags([getTag("philosophy"), getTag("reflection")]),
 		comingSoon: true,
 	},
 	{
@@ -100,6 +106,7 @@ export const WRITING_POSTS: PostMeta[] = [
 		...getWritingDateParts(2026, 4, 30),
 		readingTime: "5 min",
 		tags: [getTag("product"), getTag("guide")],
+		keywords: getKeywordsFromTags([getTag("product"), getTag("guide")]),
 		comingSoon: true,
 	},
 	{
@@ -109,6 +116,7 @@ export const WRITING_POSTS: PostMeta[] = [
 		...getWritingDateParts(2026, 5, 2),
 		readingTime: "9 min",
 		tags: [getTag("philosophy"), getTag("reflection")],
+		keywords: getKeywordsFromTags([getTag("philosophy"), getTag("reflection")]),
 		comingSoon: true,
 		hiddenInProduction: true,
 	},
@@ -120,6 +128,7 @@ export const WRITING_POSTS: PostMeta[] = [
 		...getWritingDateParts(2026, 5, 4),
 		readingTime: "2 min",
 		tags: [getTag("philosophy"), getTag("reflection")],
+		keywords: getKeywordsFromTags([getTag("philosophy"), getTag("reflection")]),
 		comingSoon: true,
 		hiddenInProduction: true,
 	},
@@ -130,6 +139,11 @@ export const WRITING_POSTS: PostMeta[] = [
 		...getWritingDateParts(2026, 5, 27),
 		readingTime: "10 min",
 		tags: [getTag("philosophy"), getTag("personal"), getTag("reflection")],
+		keywords: getKeywordsFromTags([
+			getTag("philosophy"),
+			getTag("personal"),
+			getTag("reflection"),
+		]),
 		comingSoon: true,
 		hiddenInProduction: true,
 	},
@@ -141,6 +155,7 @@ export const WRITING_POSTS: PostMeta[] = [
 		...getWritingDateParts(2026, 6, 14),
 		readingTime: "6 min",
 		tags: [getTag("engineering"), getTag("guide")],
+		keywords: getKeywordsFromTags([getTag("engineering"), getTag("guide")]),
 		comingSoon: true,
 		hiddenInProduction: true,
 	},
@@ -152,6 +167,11 @@ export const WRITING_POSTS: PostMeta[] = [
 		...getWritingDateParts(2026, 7, 31),
 		readingTime: "5 min",
 		tags: [getTag("startup"), getTag("personal"), getTag("reflection")],
+		keywords: getKeywordsFromTags([
+			getTag("startup"),
+			getTag("personal"),
+			getTag("reflection"),
+		]),
 		comingSoon: true,
 		hiddenInProduction: true,
 	},

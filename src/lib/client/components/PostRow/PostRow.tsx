@@ -13,6 +13,7 @@ export interface PostMeta {
 	timestamp: number;
 	readingTime: string; // e.g. "8 min"
 	tags: { label: string; color: TagColor }[];
+	keywords: string[]; // for SEO, derived from tags and other relevant keywords
 	comingSoon?: boolean;
 	hiddenInProduction?: boolean;
 }

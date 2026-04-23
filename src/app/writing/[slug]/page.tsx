@@ -76,12 +76,16 @@ export async function generateMetadata(
 	if (!post && !fixturePost) return {};
 
 	const meta = post?.meta ?? fixturePost;
+	const keywords = meta?.keywords?.length
+		? meta.keywords
+		: (meta?.tags.map(tag => tag.label.toLowerCase()) ?? []);
 
 	if (!meta) return {};
 
 	return {
 		title: meta.title,
 		description: meta.excerpt,
+		keywords,
 		openGraph: {
 			title: meta.title,
 			description: meta.excerpt,
