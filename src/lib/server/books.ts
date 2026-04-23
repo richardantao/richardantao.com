@@ -7,7 +7,7 @@ import matter from "gray-matter";
 import { BOOKS } from "~/lib/shared/fixtures/books";
 import type { BookMeta, ReviewedBookMeta, SpineColor } from "~/lib/shared/types/book";
 
-const BOOKS_DIR = path.join(process.cwd(), "content/bookshelf");
+const BOOKS_DIR = path.join(process.cwd(), "src/content/bookshelf");
 
 // =============================================================================
 // READERS
@@ -61,7 +61,7 @@ export async function getAllBookSlugs(): Promise<string[]> {
 	if (!fs.existsSync(BOOKS_DIR)) return [];
 	return fs
 		.readdirSync(BOOKS_DIR)
-		.filter(f => f.endsWith(".md"))
-		.map(f => f.replace(/\.md$/, ""));
+		.filter(f => f.endsWith(".mdx"))
+		.map(f => f.replace(/\.mdx$/, ""));
 }
 

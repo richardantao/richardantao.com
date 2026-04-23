@@ -1,0 +1,158 @@
+---
+title: "jsoncurrent - Stepping Into the World of Open Source"
+excerpt: "Building jsoncurrent in the open - the motivations, efforts, and lessons learned shipping my first OSS library while building a startup."
+keywords: ["jsoncurrent", "json", "open source", "streaming", "llms", "software development", "programming", "python", "typescript"]
+date: "2026-04-22"
+readingTime: "7 min"
+tags:
+  - label: "Open Source"
+    color: "blue"
+  - label: "Personal"
+    color: "indigo"
+  - label: "Essay"
+    color: "neutral"
+---
+
+I've been programming for over seven years now, and outside of building small websites for myself and others, and a few hackathons, building [Vita Learning](/projects/vita) has been the only significant project I've worked on. And while it is a significant project - given it's the startup I'm working on - it's proprietary; so the product is public for others, but the code is private to all. I've worked on the vast majority of that codebase on my own, so my experience working on multi-developer teams up until now has been limited. 
+
+Open Source Software (OSS) has always been a concept that has appealed to me. After all, the entire internet is practically built on OSS, so being able to contribute to that felt like me being a part of a movement. 
+
+This meme always seems to ring in the back of my mind:
+
+![Meme on the importance of open source for modern digital infrastructure](/images/oss-importance.png)
+
+However, actually getting involved has been more of an afterthought. My only contribution to OSS prior to releasing `jsoncurrent` was fixing a documentation typo in the Express.js repository several years ago. At the time, it felt great - because it was made in the repository of one of the largest web frameworks on the web. But for one reason or another, that contribution never left me satisfied - as if there was more out there to OSS.
+
+The idea wasn't revisited until I came across a personal problem that ended up being something applicable to millions of other developers. 
+
+### Problem: Streaming JSON from LLMs
+
+Large Language Models (LLMs) are phenomenal at generating natural language and can even emit valid JSON as a response. The problem arises when trying to *stream* JSON to a client-facing application. Users expect feedback in no more than a few seconds, and complex generations can take time to complete, so streaming a generation is a requirement to show the user that progress is being made. Complex generations may also be required when an application has more sophisticated needs than simply streaming content into a single text box. When you combine that with the need for a client app to receive structured data in the form of JSON, the gaps in the model start to show themselves.
+
+LLM providers like Anthropic and OpenAI provide tools like Structured Outputs to ensure that the models' responses are deterministic and adhere to a specific schema, but they don't expose tools to stream partial JSON without breaking the client. Trying to `JSON.parse()` a half-streamed object will simply throw a `SyntaxError` on the client.
+
+```ts
+const partial = `{
+	"flashcards": [
+		{
+			"question": "What is osmosis?",
+			"answer": "The movement of water across a semipermeable membrane"
+		},
+		{
+			"question": "What is active transport?",
+			"answer": "Movement of molecules against a concentration gradient",
+			"difficulty":
+`;
+
+JSON.parse(partial);
+// SyntaxError: Unexpected end of JSON input
+```
+
+This limitation makes it difficult to provide a good user experience (UX) without throwing together hacks to emulate the desired behaviour. There are libraries like `jsonriver` and `partial-json` that handle updating a snapshot of the JSON object as it is streamed in, but this solution is only valid when the client can accept the LLM response byte-for-byte. 
+
+Beyond handling partial streams, I needed a way in Vita to:
+
+- resolve placeholders in the LLM response
+- strip server-only fields
+- inject database values into the response
+- normalize values before being sent across the wire
+
+So not only were there few or no solutions that handled partial JSON, there wasn't an easy way to *hook* into the stream to inject our own application-level logic.
+
+### What I Built in Response
+
+`jsoncurrent` is an MIT licensed library for the Python/TypeScript ecosystem, allowing developers to stream structured JSON as new fields are emitted from the LLM. Under the hood, `jsoncurrent` is a Finite State Machine (FSM) that tracks the position of the latest token in the JSON stream from the LLM, and emits JSON patches from the server to the client that describe how to merge the latest token value into the object being assembled on the client.
+
+The [demo](/projects/jsoncurrent#demo) illustrates what is happening under the hood, and how that might look to an end user consuming a live application.
+
+The `jsoncurrent` model consists of an `Emitter` and `Collector`. The emitter plugs into the LLM stream and interprets the partial response to emit JSON patches to the client. The collector lives on the client on the other side of the transport protocol (HTTP, SSE, WebSockets, etc) and receives the patches which it can translate on its own to incrementally build the JSON object. 
+
+The library also allows developers to hook into the stream, intercepting and modifying the patches - both on the server and the client - as needed.
+
+For example, the server-side `Emitter` can sit directly inside an LLM stream handler and emit transport-friendly patch chunks as tokens arrive:
+
+```ts
+import { Emitter } from "jsoncurrent";
+
+const emitter = new Emitter();
+emitter.on("patch", chunk => {
+	res.write(`data: ${JSON.stringify(chunk)}\n\n`);
+});
+emitter.on("complete", () => {
+	res.write("data: [DONE]\n\n");
+	res.end();
+});
+
+for await (const event of stream) {
+	if (event.type === "content_block_delta" && event.delta.type === "text_delta") {
+		emitter.write(event.delta.text);
+	}
+}
+
+emitter.flush();
+```
+
+On the client, the `Collector` consumes each patch and incrementally assembles a renderable object while the stream is still in flight:
+
+```ts
+import { Collector } from "jsoncurrent";
+
+const collector = new Collector<Report>();
+
+collector.on("change", state => renderReport(state));
+collector.on("complete", final => save(final));
+
+source.onmessage = event => {
+	if (event.data === "[DONE]") {
+		collector.complete();
+		source.close();
+		return;
+	}
+
+	collector.consume(JSON.parse(event.data));
+};
+```
+
+I find it almost comedic creating `jsoncurrent` as an FSM, as I learned about this model in my second-year university course, Digital Logic Systems, where I was traumatized by Boolean logic, state tables, and Karnaugh Maps. Ironically, the course I did the worst in university was the one I actually applied to my work almost a decade after taking the course.
+
+### The Decision to Open Source It
+
+Before deciding to open source it, `jsoncurrent` was a single class with no tests that lived in the Python backend as a simple plugin to the response from our LLM provider, and I handled the client side with resource-specific reducers that had to manually merge each patch based on the patch path. The only “tests” we did were on our users (sorry, folks), and I made patch fixes to the FSM logic as exceptions arose.
+
+As I refined it, I noticed that it became a critical part of the backend logic, playing a part in almost every route, regardless of the resource use case (flashcards vs. quizzes) or schema. After realizing that it was schema-agnostic, the idea of open-sourcing it came to mind. Why not extract it from the Vita codebase and make it available to other developers who are facing the same limitations?
+
+The immediate pushback in my own head after that thought was that I'd be giving up a competitive advantage, but after thinking it through, I don't see that to be the case.
+
+I believe that `jsoncurrent` is infrastructure, and product differentiation is not built on infrastructure alone. For Vita to stand out, we need to provide a strong study flow, retention mechanics, embed virality into the product, and establish a unique distribution network. Incremental streaming is an implementation detail that users don't care about.
+
+Additionally, open-sourcing the project opens up the surface area for enhancements to be made by contributors beyond me. A better library to use for all is a better library to use for Vita.
+
+### What I Learned From Publishing
+
+Learning to deploy `v0.1.0` was another challenge in itself, and a few new challenges arose while prepping to publish the initial package.
+
+Firstly, npm enforces a check to ensure that your package name is not too similar to other existing packages already on the registry - and it sucks. The original name for `jsoncurrent` was going to be `jsondelta`, but npm flagged it as too similar to `json-delta` (fine, I guess). Then, `jsonpulse` was too similar to `jsonparse`. Like, really? It's daunting to think about how many packages are already on the registry (+3 million), so I was glad to find a name that was short, memorable, and whose name is self-describing. `jsoncurrent` is a play on the words to “(json)stream”, and it can also be viewed as a double entendre for (rendering) the most current JSON.
+
+Secondly, the internal module in the Python backend had zero tests, and while I knew I had gotten it to a point where it worked well for Vita, there were certainly still edge cases that needed to be ironed out before I could even think about making it public. At the original release, there are 100+ automated tests that should cover any regressions, and I made the commitment to keep the test coverage for any new surface area.
+
+Alongside the automated test suite, I got the chance to explore GitHub Actions for continuous integration, and automated releases to handle versioning and changelog notes with Changesets. I published a README that covers the package motivations and the API itself, but I am also exploring now what it means to write good documentation for others. I understand that even if the library serves a real purpose, if others can't understand how to apply it to their own use case, it doesn't amount to much. 
+
+### Why This is Important to Me
+
+I've wanted to contribute to the Open Source community for a long time, so it feels great to check off a box that has been sitting untouched for so long. I think this library serves as a great resource for others, and I'm excited to see where it goes from here.
+
+I am also interested in seeing how external contributions enhance the usefulness and robustness of the library. I think that the library itself will improve from external contributions, as well as at a personal level - my knowledge and understanding of what it means to build great products, and think of good design, in every aspect of my life. There is an opportunity as a previously solo developer to work alongside other developers who exceed my level of experience, and to learn from them, even if they're not contributing to my main line of work - Vita.
+
+I was also excited to see how writing Open Source software differs from writing proprietary software, and it's definitely been interesting to see how different it is to write code for a startup vs. writing code for other developers.
+
+Writing code for consumers at a fast-paced startup ironically matters less as long as the user experience is good. Readability and code quality are important, but are quickly overshadowed by the need to ship quickly and actually build something useful for the user.
+
+Writing OSS means building a strong API, documentation, and code quality that makes it easy for other developers to get excited and jump in.
+
+### What's Next
+
+As next steps, I will be building out the official documentation site at [https://jsoncurrent.com](https://jsoncurrent.com), and will be working on improving the test coverage over the next couple weeks. 
+
+Lastly, I plan to actively share and promote the library with the dev community, hoping to get early feedback on the API design, iron out any apparent bugs, and build towards a stable `v1.0.0` release.
+
+If you are a developer and want to contribute to `jsoncurrent`, please check out the [CONTRIBUTING.md](https://github.com/richardantao/jsoncurrent-js/blob/main/CONTRIBUTING.md) or send me a DM!

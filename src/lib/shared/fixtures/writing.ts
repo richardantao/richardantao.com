@@ -79,9 +79,8 @@ export const WRITING_POSTS: PostMeta[] = [
 		excerpt:
 			"Building jsoncurrent in the open - the motivations, efforts, and lessons learned shipping my first OSS library while building a startup.",
 		...getWritingDateParts(2026, 4, 22),
-		readingTime: "4 min",
+		readingTime: "7 min",
 		tags: [getTag("open-source"), getTag("personal"), getTag("essay")],
-		comingSoon: true,
 	},
 	{
 		slug: "deep-dive-into-passion",

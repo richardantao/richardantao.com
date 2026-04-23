@@ -1,7 +1,7 @@
+import type { FunctionComponent } from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { MDXRemote } from "next-mdx-remote/rsc";
 import clsx from "clsx";
 
 import { REVIEWED_BOOKS } from "~/lib/shared/fixtures/books";
@@ -17,9 +17,6 @@ const POST_DATE_FORMATTER = new Intl.DateTimeFormat("en-US", {
 	day: "numeric",
 });
 
-// =============================================================================
-// STATIC GENERATION
-// =============================================================================
 export async function generateStaticParams() {
 	const slugs = await getAllBookSlugs();
 	return slugs.map(slug => ({ slug }));
@@ -43,9 +40,6 @@ export async function generateMetadata(
 	};
 }
 
-// =============================================================================
-// PREV / NEXT AMONG REVIEWED BOOKS
-// =============================================================================
 async function getAdjacentBooks(slug: string) {
 	const all = REVIEWED_BOOKS;
 	const index = all.findIndex(b => b.slug === slug);
@@ -55,9 +49,6 @@ async function getAdjacentBooks(slug: string) {
 	};
 }
 
-// =============================================================================
-// SPINE CLASS MAP
-// =============================================================================
 const SPINE_CLASS: Record<SpineColor, string> = {
 	blue: styles.spineBlue,
 	indigo: styles.spineIndigo,
@@ -67,22 +58,23 @@ const SPINE_CLASS: Record<SpineColor, string> = {
 	violet: styles.spineViolet,
 };
 
-// =============================================================================
-// PAGE
-// =============================================================================
 export default async function BookshelfSlugPage(
 	props: PageProps<"/bookshelf/[slug]">
 ) {
-	const params = await props.params;
+	const { slug } = await props.params;
 
 	const [book, { prev, next }] = await Promise.all([
-		getBook(params.slug),
-		getAdjacentBooks(params.slug),
+		getBook(slug),
+		getAdjacentBooks(slug),
 	]);
 
 	if (!book) notFound();
 
-	const { meta, content } = book;
+	const { meta } = book;
+
+	const { default: BookContent } = (await import(
+		`~/content/bookshelf/${slug}.mdx`
+	)) as { default: FunctionComponent };
 
 	return (
 		<>
@@ -157,7 +149,7 @@ export default async function BookshelfSlugPage(
 			{/* Review body */}
 			<div className="container-narrow">
 				<article className={`${styles.article} prose`}>
-					<MDXRemote source={content} />
+					<BookContent />
 				</article>
 			</div>
 

@@ -1,7 +1,7 @@
+import type { FunctionComponent } from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { MDXRemote } from "next-mdx-remote/rsc";
 
 import { Tag } from "~/lib/client/components/Tag";
 import {
@@ -19,16 +19,33 @@ const POST_DATE_FORMATTER = new Intl.DateTimeFormat("en-US", {
 	day: "numeric",
 });
 
+function getPostDateValue(date: string, timestamp: number): Date | null {
+	if (Number.isFinite(timestamp)) {
+		return new Date(timestamp);
+	}
+
+	const parsed = new Date(date);
+	return Number.isNaN(parsed.getTime()) ? null : parsed;
+}
+
+function getPostDateTimeAttr(date: string, timestamp: number): string {
+	const parsed = getPostDateValue(date, timestamp);
+	return parsed ? parsed.toISOString() : date;
+}
+
+function getPostDateLabel(date: string, timestamp: number): string {
+	const parsed = getPostDateValue(date, timestamp);
+	return parsed ? POST_DATE_FORMATTER.format(parsed) : date;
+}
+
 export async function generateStaticParams() {
-	const fileSlugs = await getAllPostSlugs();
-	const slugs = Array.from(
-		new Set([...fileSlugs, ...VISIBLE_WRITING_POSTS.map(post => post.slug)])
-	).filter(slug => {
+	const slugs = await getAllPostSlugs();
+	const visibleSlugs = slugs.filter(slug => {
 		const fixturePost = getWritingPostBySlug(slug);
 		return !fixturePost || isWritingPostVisible(fixturePost);
 	});
 
-	return slugs.map(slug => ({ slug }));
+	return visibleSlugs.map(slug => ({ slug }));
 }
 
 export async function generateMetadata(
@@ -115,8 +132,14 @@ export default async function WritingSlugPage(
 						<h1 className={styles.title}>{fixturePost.title}</h1>
 
 						<div className={styles.meta}>
-							<time className={styles.metaItem} dateTime={fixturePost.date}>
-								{POST_DATE_FORMATTER.format(new Date(fixturePost.date))}
+							<time
+								className={styles.metaItem}
+								dateTime={getPostDateTimeAttr(
+									fixturePost.date,
+									fixturePost.timestamp
+								)}
+							>
+								{getPostDateLabel(fixturePost.date, fixturePost.timestamp)}
 							</time>
 							<span className={styles.metaDivider} aria-hidden="true" />
 							<span className={styles.metaItem}>
@@ -172,7 +195,11 @@ export default async function WritingSlugPage(
 
 	if (!post) notFound();
 
-	const { meta, content } = post;
+	const { meta } = post;
+
+	const { default: PostContent } = (await import(
+		`~/content/writing/${params.slug}.mdx`
+	)) as { default: FunctionComponent };
 
 	return (
 		<>
@@ -194,8 +221,11 @@ export default async function WritingSlugPage(
 					<h1 className={styles.title}>{meta.title}</h1>
 
 					<div className={styles.meta}>
-						<time className={styles.metaItem} dateTime={meta.date}>
-							{POST_DATE_FORMATTER.format(new Date(meta.date))}
+						<time
+							className={styles.metaItem}
+							dateTime={getPostDateTimeAttr(meta.date, meta.timestamp)}
+						>
+							{getPostDateLabel(meta.date, meta.timestamp)}
 						</time>
 						<span className={styles.metaDivider} aria-hidden="true" />
 						<span className={styles.metaItem}>{meta.readingTime} read</span>
@@ -207,7 +237,7 @@ export default async function WritingSlugPage(
 			<div className="container-narrow">
 				<div className={styles.article}>
 					<article className={`${styles.body} prose`}>
-						<MDXRemote source={content} />
+						<PostContent />
 					</article>
 				</div>
 			</div>

@@ -6,17 +6,17 @@ import path from "node:path";
 
 import type { PostMeta } from "~/lib/client/components/PostRow";
 
-const POSTS_DIR = path.join(process.cwd(), "content/blog");
+const POSTS_DIR = path.join(process.cwd(), "src/content/writing");
 
 // Returns all post metadata sorted newest-first.
 // Called only from server components — never imported in client code.
 export async function getAllPosts(): Promise<PostMeta[]> {
 	if (!fs.existsSync(POSTS_DIR)) return [];
 
-	const files = fs.readdirSync(POSTS_DIR).filter(f => f.endsWith(".md"));
+	const files = fs.readdirSync(POSTS_DIR).filter(f => f.endsWith(".mdx"));
 
 	const posts = files.map(filename => {
-		const slug = filename.replace(/\.md$/, "");
+		const slug = filename.replace(/\.mdx$/, "");
 		const raw = fs.readFileSync(path.join(POSTS_DIR, filename), "utf8");
 		const { data } = matter(raw);
 
@@ -65,6 +65,6 @@ export async function getAllPostSlugs(): Promise<string[]> {
 	if (!fs.existsSync(POSTS_DIR)) return [];
 	return fs
 		.readdirSync(POSTS_DIR)
-		.filter(f => f.endsWith(".md"))
-		.map(f => f.replace(/\.md$/, ""));
+		.filter(f => f.endsWith(".mdx"))
+		.map(f => f.replace(/\.mdx$/, ""));
 }

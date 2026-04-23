@@ -7,7 +7,7 @@
 		"npm": "11.x"
 	},
 	"sideEffects": false,
-	"packageManager": "pnpm@10.33.0",
+	"packageManager": "pnpm@10.33.1",
 	"scripts": {
 		"analyze": "next experimental-analyze",
 		"dev": "next dev -p 1001",
@@ -22,7 +22,11 @@
 		"@fortawesome/fontawesome-svg-core": "^7.2.0",
 		"@fortawesome/free-brands-svg-icons": "^7.2.0",
 		"@fortawesome/pro-solid-svg-icons": "^7.2.0",
-		"@fortawesome/react-fontawesome": "^3.3.0",
+		"@fortawesome/react-fontawesome": "^3.3.1",
+		"@mdx-js/loader": "^3.1.1",
+		"@mdx-js/react": "^3.1.1",
+		"@next/mdx": "^16.2.4",
+		"@types/mdx": "^2.0.13",
 		"clsx": "^2.1.1",
 		"gray-matter": "^4.0.3",
 		"jsoncurrent": "^0.2.0",
@@ -31,16 +35,20 @@
 		"next-mdx-remote": "^6.0.0",
 		"next-sitemap": "^4.2.3",
 		"nextjs-toploader": "^3.9.17",
-		"posthog-js": "^1.369.3",
+		"posthog-js": "^1.370.1",
 		"react": "19.2.5",
 		"react-dom": "19.2.5",
-		"react-markdown": "^10.1.0"
+		"react-markdown": "^10.1.0",
+		"remark-frontmatter": "^5.0.0",
+		"remark-mdx-frontmatter": "^5.2.0",
+		"sugar-high": "^1.1.0"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.4.12",
 		"@types/node": "25.6.0",
 		"@types/react": "19.2.14",
 		"@types/react-dom": "19.2.3",
+		"babel-plugin-react-compiler": "^1.0.0",
 		"sass": "^1.99.0",
 		"typescript": "6.0.3"
 	}

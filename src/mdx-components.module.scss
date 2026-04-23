@@ -1,0 +1,134 @@
+@use "~/styles/abstracts" as *;
+
+.h1 {
+  @include text-display-md;
+  color: var(--text-primary);
+  padding-top: var(--space-12);
+  margin: 0;
+}
+
+.h2 {
+  @include text-heading-xl;
+  color: var(--text-primary);
+  margin-top: var(--space-8);
+  margin-bottom: var(--space-3);
+}
+
+.h3 {
+  @include text-heading-lg;
+  color: var(--text-primary);
+  margin-top: var(--space-8);
+  margin-bottom: var(--space-3);
+}
+
+.h4 {
+  @include text-heading-md;
+  color: var(--text-primary);
+  margin-top: var(--space-6);
+  margin-bottom: var(--space-2);
+}
+
+.paragraph {
+  @include text-body;
+  color: var(--text-secondary);
+  line-height: 1.75;
+}
+
+.orderedList,
+.unorderedList {
+  @include text-body;
+  color: var(--text-secondary);
+  padding-left: var(--space-6);
+  margin-bottom: var(--space-5);
+}
+
+.orderedList {
+  list-style: decimal;
+}
+
+.unorderedList {
+  list-style: disc;
+}
+
+.listItem {
+  margin-bottom: var(--space-2);
+  line-height: 1.7;
+}
+
+.emphasis {
+  font-style: italic;
+  color: var(--text-secondary);
+}
+
+.strong {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.link {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-color: var(--accent-border);
+  text-underline-offset: 3px;
+  transition: text-decoration-color var(--duration-fast) var(--ease-out);
+
+  &:hover {
+    text-decoration-color: var(--accent);
+  }
+}
+
+.code {
+  @include font-mono;
+  font-size: 0.875em;
+  color: var(--accent-secondary);
+  background: var(--accent-secondary-subtle);
+  border: 1px solid var(--accent-secondary-border);
+  border-radius: var(--radius-sm);
+  padding: 2px 6px;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  margin: var(--space-6) 0;
+  border-radius: var(--radius-lg);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-6) 0;
+  font-size: var(--text-sm);
+}
+
+.tableHeader {
+  @include font-display(600);
+  font-size: var(--text-xs);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  text-align: left;
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--border-default);
+}
+
+.tableCell {
+  @include text-body-sm;
+  color: var(--text-secondary);
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.tableRow:last-child .tableCell {
+  border-bottom: 0;
+}
+
+.blockquote {
+  border-left: 3px solid var(--accent);
+  padding-left: var(--space-5);
+  margin: var(--space-8) 0;
+  color: var(--text-tertiary);
+  font-style: italic;
+}
