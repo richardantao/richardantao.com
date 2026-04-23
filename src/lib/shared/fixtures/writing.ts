@@ -88,14 +88,14 @@ export const WRITING_POSTS: PostMeta[] = [
 		keywords: ["jsoncurrent", "json", "open source", "streaming", "llms"],
 	},
 	{
-		slug: "deep-dive-into-passion",
+		slug: "deep-dive-into-passion-and-suffering",
 		title: "A Deep Dive into Passion (and Suffering)",
 		excerpt:
 			"A reflective essay on the etymology of 'passion', it's relation to suffering, and the cost of caring deeply.",
 		...getWritingDateParts(2026, 4, 26),
 		readingTime: "10 min",
-		tags: [getTag("philosophy"), getTag("reflection")],
-		keywords: getKeywordsFromTags([getTag("philosophy"), getTag("reflection")]),
+		tags: [getTag("philosophy"), getTag("essay")],
+		keywords: ["passion", "suffering", "love", "philosophy", "essay"],
 		comingSoon: true,
 	},
 	{
