@@ -7,11 +7,11 @@ export function JsoncurrentActions() {
 	return (
 		<>
 			<Button
-				href="https://github.com/richardantao/jsoncurrent-js"
+				href="https://jsoncurrent.com"
 				external
-				onClick={() => posthog.capture("jsoncurrent_repo_clicked")}
+				onClick={() => posthog.capture("jsoncurrent_docs_clicked")}
 			>
-				View repository
+				View Docs
 			</Button>
 			<Button href="#demo" variant="outlineAccent">
 				Jump to demo
