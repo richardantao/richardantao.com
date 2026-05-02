@@ -25,7 +25,7 @@ However, actually getting involved has been more of an afterthought. My only con
 
 The idea wasn't revisited until I came across a personal problem that ended up being something applicable to millions of other developers. 
 
-### Problem: Streaming JSON from LLMs
+## Problem: Streaming JSON from LLMs
 
 Large Language Models (LLMs) are phenomenal at generating natural language and can even emit valid JSON as a response. The problem arises when trying to *stream* JSON to a client-facing application. Users expect feedback in no more than a few seconds, and complex generations can take time to complete, so streaming a generation is a requirement to show the user that progress is being made. Complex generations may also be required when an application has more sophisticated needs than simply streaming content into a single text box. When you combine that with the need for a client app to receive structured data in the form of JSON, the gaps in the model start to show themselves.
 
@@ -59,7 +59,7 @@ Beyond handling partial streams, I needed a way in Vita to:
 
 So not only were there few or no solutions that handled partial JSON, there wasn't an easy way to *hook* into the stream to inject our own application-level logic.
 
-### What I Built in Response
+## What I Built in Response
 
 `jsoncurrent` is an MIT licensed library for the Python/TypeScript ecosystem, allowing developers to stream structured JSON as new fields are emitted from the LLM. Under the hood, `jsoncurrent` is a Finite State Machine (FSM) that tracks the position of the latest token in the JSON stream from the LLM, and emits JSON patches from the server to the client that describe how to merge the latest token value into the object being assembled on the client.
 
@@ -115,7 +115,7 @@ source.onmessage = event => {
 
 I find it almost comedic creating `jsoncurrent` as an FSM, as I learned about this model in my second-year university course, Digital Logic Systems, where I was traumatized by Boolean logic, state tables, and Karnaugh Maps. Ironically, the course I did the worst in university was the one I actually applied to my work almost a decade after taking the course.
 
-### The Decision to Open Source It
+## The Decision to Open Source It
 
 Before deciding to open source it, `jsoncurrent` was a single class with no tests that lived in the Python backend as a simple plugin to the response from our LLM provider, and I handled the client side with resource-specific reducers that had to manually merge each patch based on the patch path. The only “tests” we did were on our users (sorry, folks), and I made patch fixes to the FSM logic as exceptions arose.
 
@@ -127,7 +127,7 @@ I believe that `jsoncurrent` is infrastructure, and product differentiation is n
 
 Additionally, open-sourcing the project opens up the surface area for enhancements to be made by contributors beyond me. A better library to use for all is a better library to use for Vita.
 
-### What I Learned From Publishing
+## What I Learned From Publishing
 
 Learning to deploy `v0.1.0` was another challenge in itself, and a few new challenges arose while prepping to publish the initial package.
 
@@ -137,7 +137,7 @@ Secondly, the internal module in the Python backend had zero tests, and while I 
 
 Alongside the automated test suite, I got the chance to explore GitHub Actions for continuous integration, and automated releases to handle versioning and changelog notes with Changesets. I published a README that covers the package motivations and the API itself, but I am also exploring now what it means to write good documentation for others. I understand that even if the library serves a real purpose, if others can't understand how to apply it to their own use case, it doesn't amount to much. 
 
-### Why This is Important to Me
+## Why This is Important to Me
 
 I've wanted to contribute to the Open Source community for a long time, so it feels great to check off a box that has been sitting untouched for so long. I think this library serves as a great resource for others, and I'm excited to see where it goes from here.
 
@@ -149,7 +149,7 @@ Writing code for consumers at a fast-paced startup ironically matters less as lo
 
 Writing OSS means building a strong API, documentation, and code quality that makes it easy for other developers to get excited and jump in.
 
-### What's Next
+## What's Next
 
 As next steps, I will be building out the official documentation site at [https://jsoncurrent.com](https://jsoncurrent.com), and will be working on improving the test coverage over the next couple weeks. 
 
