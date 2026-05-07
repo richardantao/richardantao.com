@@ -130,7 +130,7 @@ export const WRITING_POSTS: PostMeta[] = [
 		title: "Design Systems for Dummies",
 		excerpt:
 			"Me. I'm the dummy. How I went about creating a design system for Vita as someone who doesn't work in Figma.",
-		...getWritingDateParts(2026, 5, 4),
+		...getWritingDateParts(2026, 5, 9),
 		readingTime: "5 min",
 		tags: [getTag("product"), getTag("guide")],
 		keywords: getKeywordsFromTags([getTag("product"), getTag("guide")]),
