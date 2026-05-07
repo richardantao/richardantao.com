@@ -107,6 +107,25 @@ export const WRITING_POSTS: PostMeta[] = [
 		],
 	},
 	{
+		slug: "like-it-was-your-last-day",
+		title: "Like It Was Your Last Day",
+		excerpt: "An intuitive reflection inspired by my commute home.",
+		...getWritingDateParts(2026, 5, 7),
+		readingTime: "1 min",
+		tags: [getTag("poetry"), getTag("reflection")],
+		keywords: [
+			"poetry",
+			"reflection",
+			"passion",
+			"mindfulness",
+			"mortality",
+			"last day",
+			"living intentionally",
+			"daily life",
+			"life reflection",
+		],
+	},
+	{
 		slug: "design-systems-for-dummies",
 		title: "Design Systems for Dummies",
 		excerpt:
