@@ -109,7 +109,8 @@ export const WRITING_POSTS: PostMeta[] = [
 	{
 		slug: "like-it-was-your-last-day",
 		title: "Like It Was Your Last Day",
-		excerpt: "An intuitive reflection inspired by my commute home.",
+		excerpt:
+			"A reflection on mortality, mindfulness, and living intentionally.",
 		...getWritingDateParts(2026, 5, 7),
 		readingTime: "1 min",
 		tags: [getTag("poetry"), getTag("reflection")],
