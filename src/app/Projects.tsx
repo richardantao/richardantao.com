@@ -25,9 +25,23 @@ const PROJECTS: Project[] = [
 		name: "jsoncurrent",
 		iconLabel: "jc",
 		iconVariant: "indigo",
-		externalHref: "https://github.com/richardantao/jsoncurrrent-js",
+		externalHref: "https://github.com/richardantao/jsoncurrent-js",
 		description:
 			"A streaming JSON patch protocol for incremental LLM response delivery. Solves real-time UI updates from AI streams. TypeScript + Python, MIT licensed.",
+		tags: [
+			{ label: "Open source", color: "indigo" },
+			{ label: "TypeScript", color: "neutral" },
+			{ label: "Python", color: "neutral" },
+		],
+	},
+	{
+		slug: "brightspace",
+		name: "brightspace-lms",
+		iconLabel: "bs",
+		iconVariant: "blue",
+		externalHref: "https://github.com/richardantao/brightspace-lms-js",
+		description:
+			"Open source Python/TypeScript clients for the D2L Brightspace Valence API with auth flows, version negotiation, retries, pagination, and typed resource namespaces.",
 		tags: [
 			{ label: "Open source", color: "indigo" },
 			{ label: "TypeScript", color: "neutral" },
